@@ -5,14 +5,15 @@
  */
 
 .logo {
-  width: auto;
-  height: rem-calc(40);
+  display: inline-block;
+  width: rem-calc(22);
+  height: rem-calc(35);
+  background: url('../images/firebase.svg') no-repeat;
+  background-size: auto rem-calc(35);
+  vertical-align: middle;
 
   &__text {
-    font-size: rem-calc(18);
-  }
-
-  &--small {
-    height: rem-calc(30);
+    font-weight: 500;
+    vertical-align: middle;
   }
 }
