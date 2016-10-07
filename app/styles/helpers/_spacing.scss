@@ -1,0 +1,44 @@
+/*
+ * Spacing
+ */
+
+// margin and padding values array
+$space-values: (
+  0,
+  5,
+  10,
+  15,
+  16,
+  20,
+  30,
+  40,
+  50
+) !default;
+
+// margin and padding shorthands
+$space-prefixes: (
+  p: padding,
+  pt: padding-top,
+  pr: padding-right,
+  pb: padding-bottom,
+  pl: padding-left,
+  m: margin,
+  mt: margin-top,
+  mr: margin-right,
+  mb: margin-bottom,
+  ml: margin-left,
+) !default;
+
+
+// main function definition
+@mixin make-space($values, $prefixes) {
+  @each $attr-short, $attr-long in $prefixes {
+    @each $value in $values {
+      .h-s-#{$attr-short}-#{$value} {
+        #{$attr-long}: #{$value}#{'px'};
+      }
+    }
+  }
+}
+
+@include make-space($space-values, $space-prefixes);

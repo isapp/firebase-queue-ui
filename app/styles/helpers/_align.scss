@@ -1,0 +1,21 @@
+/*
+ * Align
+ */
+
+.h-align {
+  &--left {
+    float: left;
+  }
+
+  &--right {
+    float: right;
+  }
+
+  &-text-left {
+    text-align: left;
+  }
+
+  &-text-right {
+    text-align: right;
+  }
+}

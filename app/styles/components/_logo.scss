@@ -1,0 +1,18 @@
+/*
+ * Logo
+ * Usage:
+ * <img src="images/is.png" class="logo" alt="IS">
+ */
+
+.logo {
+  width: auto;
+  height: rem-calc(40);
+
+  &__text {
+    font-size: rem-calc(18);
+  }
+
+  &--small {
+    height: rem-calc(30);
+  }
+}

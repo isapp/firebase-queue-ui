@@ -1,0 +1,12 @@
+/*
+ * Section
+ * Usage:
+ * <section class="section section--center">
+ *   ...
+ * </section>
+ */
+
+.section {
+  position: relative;
+  padding: rem-calc(25);
+}
