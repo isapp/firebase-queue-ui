@@ -1,0 +1,19 @@
+/*
+ * Logo
+ * Usage:
+ * <img src="images/is.png" class="logo" alt="IS">
+ */
+
+.logo {
+  display: inline-block;
+  width: rem-calc(22);
+  height: rem-calc(35);
+  background: url('../images/firebase.svg') no-repeat;
+  background-size: auto rem-calc(35);
+  vertical-align: middle;
+
+  &__text {
+    font-weight: 500;
+    vertical-align: middle;
+  }
+}

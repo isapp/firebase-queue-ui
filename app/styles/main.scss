@@ -1,10 +1,14 @@
-// bower:scss
-// endbower
+// Sass utilities
+@import 'util/util';
 
-body {
-  font-family: 'Roboto', sans-serif;
-}
+// Helpers
+@import 'helpers/spacing';
+@import 'helpers/align';
 
-.demo-card-wide.mdl-card {
-  width: 100%;
-}
+// Global variables and styles
+@import 'global';
+
+// Components
+@import "components/section";
+@import "components/card";
+@import "components/logo";

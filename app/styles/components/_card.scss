@@ -1,0 +1,24 @@
+/*
+ * Card
+ * Usage:
+ * <section class="section section--center">
+ *   ...
+ * </section>
+ */
+
+.card {
+  margin: 0 auto;
+  width: 100%;
+
+  &--small {
+    max-width: rem-calc(400);
+  }
+
+  &--medium {
+    max-width: rem-calc(500);
+  }
+
+  &--large {
+    max-width: rem-calc(750);
+  }
+}
