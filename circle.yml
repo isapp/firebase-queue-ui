@@ -15,12 +15,13 @@ test:
   override:
     - gulp lint
     - gulp lint:test
-    - gulp
+    - gulp test
 
 deployment:
   staging:
     branch: master
     commands:
+      - gulp
       - firebase deploy --token "$FIREBASE_TOKEN" --project "$FIREBASE_STAGING_PROJECT"
 
 notify:
