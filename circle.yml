@@ -15,6 +15,7 @@ test:
   override:
     - gulp lint
     - gulp lint:test
+    - gulp
 
 deployment:
   staging:
