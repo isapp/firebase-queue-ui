@@ -32,7 +32,13 @@ gulp
 
 ### Tests
 
-Run to execute the tests in the browser
+Run to execute tests in the Terminal
+
+```bash
+gulp test
+```
+
+Run to execute tests in the browser
 
 ```bash
 gulp serve:test
