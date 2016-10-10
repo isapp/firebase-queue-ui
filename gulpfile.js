@@ -4,6 +4,7 @@ const browserSync = require('browser-sync');
 const del = require('del');
 const wiredep = require('wiredep').stream;
 const runSequence = require('run-sequence');
+const mocha = require('gulp-mocha');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -144,6 +145,11 @@ gulp.task('serve:test', ['scripts'], () => {
   gulp.watch(['test/spec/**/*.js', 'test/index.html']).on('change', reload);
   gulp.watch('test/spec/**/*.js', ['lint:test']);
 });
+
+gulp.task('test', () =>
+  gulp.src('test/spec/**/*.js', {read: false})
+    .pipe(mocha({reporter: 'nyan'}))
+);
 
 // inject bower components
 gulp.task('wiredep', () => {
