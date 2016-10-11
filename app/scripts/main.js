@@ -7,4 +7,4 @@ import 'material-design-lite/material';
 window.$ = $;
 window.jQuery = jQuery;
 
-console.log($('.js-card-queue'));
+require('./card.js');

@@ -28,7 +28,12 @@ gulp.task('styles', () => {
 
 gulp.task('scripts', () => {
   return gulp.src('app/scripts/**/*.js', {read: false})
-    .pipe($.plumber())
+    .pipe($.plumber({
+      errorHandler: function (err) {
+        console.log(err);
+        this.emit('end');
+      }
+    }))
     .pipe($.tap(function (file) {
       gutil.log('bundling ' + file.path);
       file.contents = browserify(file.path, {debug: true}).bundle();

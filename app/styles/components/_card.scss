@@ -1,9 +1,5 @@
 /*
  * Card
- * Usage:
- * <section class="section section--center">
- *   ...
- * </section>
  */
 
 .card {
@@ -22,19 +18,63 @@
     max-width: rem-calc(750);
   }
 
+  /*
+   * Title
+   */
+
+  &__title {
+    margin: 0;
+    font-weight: 400;
+  }
+
+  /*
+   * Menu
+   */
+
+  &__menu {
+    top: rem-calc(10);
+  }
+
+  /*
+   * Queue
+   */
+
   &__queue {
     min-height: auto;
 
     &__expand {
       text-decoration: none;
+
+      &:focus {
+        outline: 0;
+      }
+
+      .is-expanded & {
+        border-bottom: 1px solid rgba(#000, 0.1);
+      }
+    }
+
+    &__info,
+    &__more {
+      height: 0;
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.15s ease;
+
+      .is-expanded & {
+        height: auto;
+        visibility: visible;
+        opacity: 1;
+      }
     }
 
     &__info {
-      height: 0;
-    }
+      max-height: 0;
+      transition: all 0.5s ease;
 
-    .is-expanded &__info {
-      height: auto;
+      .is-expanded & {
+        max-height: rem-calc(600);
+      }
     }
   }
 }
