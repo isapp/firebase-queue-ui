@@ -5,6 +5,8 @@ const del = require('del');
 const wiredep = require('wiredep').stream;
 const runSequence = require('run-sequence');
 const mocha = require('gulp-mocha');
+const browserify = require('browserify');
+const gutil = require('gulp-util');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -25,11 +27,12 @@ gulp.task('styles', () => {
 });
 
 gulp.task('scripts', () => {
-  return gulp.src('app/scripts/**/*.js')
+  return gulp.src('app/scripts/**/*.js', {read: false})
     .pipe($.plumber())
-    .pipe($.sourcemaps.init())
-    .pipe($.babel())
-    .pipe($.sourcemaps.write('.'))
+    .pipe($.tap(function (file) {
+      gutil.log('bundling ' + file.path);
+      file.contents = browserify(file.path, {debug: true}).bundle();
+    }))
     .pipe(gulp.dest('.tmp/scripts'))
     .pipe(reload({stream: true}));
 });

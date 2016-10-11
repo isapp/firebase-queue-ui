@@ -21,4 +21,20 @@
   &--large {
     max-width: rem-calc(750);
   }
+
+  &__queue {
+    min-height: auto;
+
+    &__expand {
+      text-decoration: none;
+    }
+
+    &__info {
+      height: 0;
+    }
+
+    .is-expanded &__info {
+      height: auto;
+    }
+  }
 }
