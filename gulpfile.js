@@ -178,6 +178,8 @@ gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
   return gulp.src('public/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
+gulp.task('watch', ['serve']);
+
 gulp.task('default', () => {
   runSequence(['clean', 'wiredep'], 'build');
 });
