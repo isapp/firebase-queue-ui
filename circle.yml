@@ -20,7 +20,3 @@ deployment:
     commands:
       - gulp
       - firebase deploy --token "$FIREBASE_TOKEN" --project "$FIREBASE_STAGING_PROJECT"
-
-notify:
-  webhooks:
-    - url: $NOTIFY_WEBHOOK
