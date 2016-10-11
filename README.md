@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/isapp/firebase-queue-ui.svg?style=svg)](https://circleci.com/gh/isapp/firebase-queue-ui)
+
 # Firebase Queue UI
 
 ![](screenshot.png)
@@ -48,3 +50,5 @@ gulp serve:test
 
 
 ## License
+
+See [LICENSE](LICENSE)
