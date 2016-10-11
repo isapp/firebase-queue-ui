@@ -5,4 +5,13 @@
 .list {
   margin: 0;
   padding: 0;
+
+  /*
+   * Icon
+   */
+
+   &__icon {
+     color: #757575;
+     background: none;
+   }
 }
