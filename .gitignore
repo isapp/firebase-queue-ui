@@ -4,3 +4,4 @@ public
 .DS_Store
 bower_components
 test/bower_components
+xunit.xml

@@ -142,7 +142,7 @@ gulp.task('serve:public', () => {
 
 gulp.task('test', () =>
   gulp.src('test/spec/**/*.js', {read: false})
-    .pipe(mocha({reporter: 'nyan'}))
+    .pipe(mocha({reporter: 'xunit-file'}))
 );
 
 gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
