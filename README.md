@@ -34,16 +34,10 @@ gulp
 
 ### Tests
 
-Run to execute tests in the Terminal
+Run to execute tests
 
 ```bash
 gulp test
-```
-
-Run to execute tests in the browser
-
-```bash
-gulp serve:test
 ```
 
 ## Contribute

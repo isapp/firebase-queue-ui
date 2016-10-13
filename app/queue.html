@@ -8,13 +8,8 @@
   <link href="favicon.png" rel="icon" type="image/png">
 
   <!-- build:css styles/vendor.css -->
-  <!-- bower:css -->
-  <link rel="stylesheet" href="/bower_components/material-design-lite/material.min.css" />
-  <link rel="stylesheet" href="/bower_components/normalize-css/normalize.css" />
-  <!-- endbower -->
+  <link rel="stylesheet" href="styles/vendor.css">
   <!-- endbuild -->
-
-  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue-light_blue.min.css" />
 
   <!-- build:css styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
@@ -40,10 +35,10 @@
       <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
         <a href="#all" class="mdl-layout__tab is-active">All</a>
         <a href="#delayed" class="mdl-layout__tab">Delayed</a>
-        <a href="#queued" class="mdl-layout__tab"><i class="material-icons list__icon">line_weight</i> Queued</a>
-        <a href="#activated" class="mdl-layout__tab"><i class="material-icons list__icon">input</i> Activated</a>
-        <a href="#completed" class="mdl-layout__tab"><i class="material-icons list__icon">done</i> Completed</a>
-        <a href="#failed" class="mdl-layout__tab"><i class="material-icons list__icon">close</i> Failed</a>
+        <a href="#queued" class="mdl-layout__tab"><i class="material-icons md-light icon--tab h-s-pr-5">line_weight</i> Queued</a>
+        <a href="#activated" class="mdl-layout__tab"><i class="material-icons md-light icon--tab h-s-pr-5">input</i> Activated</a>
+        <a href="#completed" class="mdl-layout__tab"><i class="material-icons md-light icon--tab h-s-pr-5">done</i> Completed</a>
+        <a href="#failed" class="mdl-layout__tab"><i class="material-icons md-light icon--tab h-s-pr-5">close</i> Failed</a>
       </div>
     </header>
 
@@ -78,7 +73,7 @@
             <ul class="list mdl-list">
               <li class="mdl-list__item mdl-list__item--three-line">
                 <span class="mdl-list__item-primary-content">
-                  <i class="material-icons list__icon mdl-list__item-avatar">view_headline</i>
+                  <i class="material-icons mdl-list__item-icon list__icon">view_headline</i>
                   <span>Queued</span>
                   <span class="mdl-list__item-text-body">
                     Tue, October 11th 02:42:23 pm
@@ -87,7 +82,7 @@
               </li>
               <li class="mdl-list__item mdl-list__item--three-line">
                 <span class="mdl-list__item-primary-content">
-                  <i class="material-icons list__icon mdl-list__item-avatar">input</i>
+                  <i class="material-icons mdl-list__item-icon list__icon">input</i>
                   <span>Activated</span>
                   <span class="mdl-list__item-text-body">
                     Tue, October 11th 02:43:11 pm
@@ -96,7 +91,7 @@
               </li>
               <li class="mdl-list__item mdl-list__item--three-line">
                 <span class="mdl-list__item-primary-content">
-                  <i class="material-icons list__icon mdl-list__item-avatar">cached</i>
+                  <i class="material-icons mdl-list__item-icon list__icon">cached</i>
                   <span>Processed</span>
                   <span class="mdl-list__item-text-body">
                     Tue, October 11th 02:43:20 pm
@@ -105,7 +100,7 @@
               </li>
               <li class="mdl-list__item mdl-list__item--three-line">
                 <span class="mdl-list__item-primary-content">
-                  <i class="material-icons list__icon mdl-list__item-avatar">done</i>
+                  <i class="material-icons mdl-list__item-icon list__icon">done</i>
                   <span>Completed</span>
                   <span class="mdl-list__item-text-body">
                     Tue, October 11th 02:43:22 pm
@@ -133,15 +128,8 @@
 
   </div>
 
-<!-- build:js scripts/vendor.js -->
-<!-- bower:js -->
-<script src="/bower_components/jquery/dist/jquery.js"></script>
-<script src="/bower_components/material-design-lite/material.min.js"></script>
-<!-- endbower -->
-<!-- endbuild -->
-
-<!-- build:js scripts/main.js -->
-<script src="scripts/main.js"></script>
-<!-- endbuild -->
+  <!-- build:js scripts/main.js -->
+  <script src="scripts/main.js"></script>
+  <!-- endbuild -->
 </body>
 </html>

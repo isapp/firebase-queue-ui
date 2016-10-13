@@ -1,12 +1,10 @@
 'use strict';
 
-const toggle = function () {
-  $('.js-card-queue-toggle').click(function (e) {
+import $ from 'jquery';
 
-    e.preventDefault();
+$('.js-card-queue-toggle').click(function (e) {
 
-    $(this).closest('.js-card-queue').toggleClass('is-expanded');
-  });
-}
+  e.preventDefault();
 
-toggle();
+  $(this).closest('.js-card-queue').toggleClass('is-expanded');
+});

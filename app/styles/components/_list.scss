@@ -10,8 +10,10 @@
    * Icon
    */
 
-   &__icon {
-     color: #757575;
-     background: none;
+   &__icon.material-icons {
+     margin-right: rem-calc(20);
+     width: rem-calc(36);
+     height: rem-calc(36);
+     font-size: rem-calc(36);
    }
 }

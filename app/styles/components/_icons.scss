@@ -1,0 +1,12 @@
+/*
+ * Icon
+ */
+
+.icon {
+  &--tab.material-icons {
+    position: relative;
+    top: -1px;
+    font-size: rem-calc(20);
+    vertical-align: middle;
+  }
+}
