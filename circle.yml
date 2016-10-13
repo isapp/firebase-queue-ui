@@ -7,9 +7,6 @@ machine:
 dependencies:
   pre:
     - npm install -g firebase-tools bower
-    - bower install
-  cache_directories:
-    - "bower_components"
 
 test:
   override:
