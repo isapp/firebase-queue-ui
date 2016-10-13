@@ -31,12 +31,11 @@
         </span>
       </div>
 
-      <!-- Tabs -->
       <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
         <a href="#all" class="mdl-layout__tab is-active">All</a>
         <a href="#delayed" class="mdl-layout__tab">Delayed</a>
         <a href="#queued" class="mdl-layout__tab"><i class="material-icons md-light icon--tab h-s-pr-5">line_weight</i> Queued</a>
-        <a href="#activated" class="mdl-layout__tab"><i class="material-icons md-light icon--tab h-s-pr-5">input</i> Activated</a>
+        <a href="#activated" class="mdl-layout__tab"><i class="material-icons md-light icon--tab h-s-pr-5">publish</i> Activated</a>
         <a href="#completed" class="mdl-layout__tab"><i class="material-icons md-light icon--tab h-s-pr-5">done</i> Completed</a>
         <a href="#failed" class="mdl-layout__tab"><i class="material-icons md-light icon--tab h-s-pr-5">close</i> Failed</a>
       </div>
@@ -45,62 +44,80 @@
     <main class="mdl-layout__content">
 
       <section class="section section--center">
-        <div class="card card__queue card--large mdl-card mdl-shadow--2dp js-card-queue">
 
-          <a href="#" class="card__queue__expand js-card-queue-toggle">
-            <div class="mdl-card__supporting-text">
-              <h5 class="card__title">Queue Item Name</h5>
+        <div class="mdl-card mdl-card__queue mdl-card--large js-card-queue">
+          <a href="#" class="mdl-card__queue__expand js-card-queue-toggle">
+            <div class="mdl-card__title">
+              <h5 class="mdl-card__title-text">Queue Item Name</h5>
             </div>
           </a>
 
-          <div class="card__queue__more mdl-card__menu card__menu">
+          <div class="mdl-card__menu mdl-card__queue__more">
             <button id="action" class="mdl-button mdl-js-button mdl-button--icon">
               <i class="material-icons">more_vert</i>
             </button>
           </div>
 
           <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="action">
-            <li class="mdl-menu__item">Rerun</li>
+            <li class="mdl-menu__item">Retry</li>
             <li class="mdl-menu__item">Remove</li>
           </ul>
 
-          <div class="card__queue__info">
-            <div class="mdl-card__supporting-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Mauris sagittis pellentesque lacus eleifend lacinia...
+          <div class="mdl-card__queue__info">
+            <div class="mdl-card__title">
+              <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Data</h5>
             </div>
 
-            <ul class="list mdl-list">
+            <div class="mdl-card__supporting-text">
+              <pre><code class="js-highlight-syntax">
+                {
+                  "name" : "Adele",
+                  "phone" : {
+                    "country_code" : "1",
+                    "number" : "123456789"
+                  }
+                }
+              </code></pre>
+            </div>
+
+            <div class="mdl-card__title">
+              <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Events</h5>
+            </div>
+
+            <ul class="mdl-list">
               <li class="mdl-list__item mdl-list__item--three-line">
                 <span class="mdl-list__item-primary-content">
-                  <i class="material-icons mdl-list__item-icon list__icon">view_headline</i>
+                  <i class="material-icons mdl-list__item-icon">view_headline</i>
                   <span>Queued</span>
                   <span class="mdl-list__item-text-body">
                     Tue, October 11th 02:42:23 pm
                   </span>
                 </span>
               </li>
+
               <li class="mdl-list__item mdl-list__item--three-line">
                 <span class="mdl-list__item-primary-content">
-                  <i class="material-icons mdl-list__item-icon list__icon">input</i>
+                  <i class="material-icons mdl-list__item-icon">publish</i>
                   <span>Activated</span>
                   <span class="mdl-list__item-text-body">
                     Tue, October 11th 02:43:11 pm
                   </span>
                 </span>
               </li>
+
               <li class="mdl-list__item mdl-list__item--three-line">
                 <span class="mdl-list__item-primary-content">
-                  <i class="material-icons mdl-list__item-icon list__icon">cached</i>
+                  <i class="material-icons mdl-list__item-icon">cached</i>
                   <span>Processed</span>
                   <span class="mdl-list__item-text-body">
                     Tue, October 11th 02:43:20 pm
                   </span>
                 </span>
               </li>
+
               <li class="mdl-list__item mdl-list__item--three-line">
                 <span class="mdl-list__item-primary-content">
-                  <i class="material-icons mdl-list__item-icon list__icon">done</i>
+                  <i class="material-icons mdl-list__item-icon">done</i>
                   <span>Completed</span>
                   <span class="mdl-list__item-text-body">
                     Tue, October 11th 02:43:22 pm
@@ -110,21 +127,176 @@
             </ul>
           </div>
         </div>
+
+        <div class="mdl-card mdl-card__queue mdl-card--large js-card-queue">
+          <a href="#" class="mdl-card__queue__expand js-card-queue-toggle">
+            <div class="mdl-card__title">
+              <h5 class="mdl-card__title-text">Queue Item Name</h5>
+            </div>
+          </a>
+
+          <div class="mdl-card__menu mdl-card__queue__more">
+            <button id="action" class="mdl-button mdl-js-button mdl-button--icon">
+              <i class="material-icons">more_vert</i>
+            </button>
+          </div>
+
+          <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="action">
+            <li class="mdl-menu__item">Retry</li>
+            <li class="mdl-menu__item">Remove</li>
+          </ul>
+
+          <div class="mdl-card__queue__info">
+            <div class="mdl-card__title">
+              <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Data</h5>
+            </div>
+
+            <div class="mdl-card__supporting-text">
+              <pre><code class="js-highlight-syntax">
+                {
+                  "name" : "Adele",
+                  "phone" : {
+                    "country_code" : "1",
+                    "number" : "123456789"
+                  }
+                }
+              </code></pre>
+            </div>
+
+            <div class="mdl-card__title">
+              <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Events</h5>
+            </div>
+
+            <ul class="mdl-list">
+              <li class="mdl-list__item mdl-list__item--three-line">
+                <span class="mdl-list__item-primary-content">
+                  <i class="material-icons mdl-list__item-icon">view_headline</i>
+                  <span>Queued</span>
+                  <span class="mdl-list__item-text-body">
+                    Tue, October 11th 02:42:23 pm
+                  </span>
+                </span>
+              </li>
+
+              <li class="mdl-list__item mdl-list__item--three-line">
+                <span class="mdl-list__item-primary-content">
+                  <i class="material-icons mdl-list__item-icon">publish</i>
+                  <span>Activated</span>
+                  <span class="mdl-list__item-text-body">
+                    Tue, October 11th 02:43:11 pm
+                  </span>
+                </span>
+              </li>
+
+              <li class="mdl-list__item mdl-list__item--three-line">
+                <span class="mdl-list__item-primary-content">
+                  <i class="material-icons mdl-list__item-icon">cached</i>
+                  <span>Processed</span>
+                  <span class="mdl-list__item-text-body">
+                    Tue, October 11th 02:43:20 pm
+                  </span>
+                </span>
+              </li>
+
+              <li class="mdl-list__item mdl-list__item--three-line">
+                <span class="mdl-list__item-primary-content">
+                  <i class="material-icons mdl-list__item-icon">done</i>
+                  <span>Completed</span>
+                  <span class="mdl-list__item-text-body">
+                    Tue, October 11th 02:43:22 pm
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mdl-card mdl-card__queue mdl-card--large js-card-queue">
+          <a href="#" class="mdl-card__queue__expand js-card-queue-toggle">
+            <div class="mdl-card__title">
+              <h5 class="mdl-card__title-text">Queue Item Name</h5>
+            </div>
+          </a>
+
+          <div class="mdl-card__menu mdl-card__queue__more">
+            <button id="action" class="mdl-button mdl-js-button mdl-button--icon">
+              <i class="material-icons">more_vert</i>
+            </button>
+          </div>
+
+          <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="action">
+            <li class="mdl-menu__item">Retry</li>
+            <li class="mdl-menu__item">Remove</li>
+          </ul>
+
+          <div class="mdl-card__queue__info">
+            <div class="mdl-card__title">
+              <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Data</h5>
+            </div>
+
+            <div class="mdl-card__supporting-text">
+              <pre><code class="js-highlight-syntax">
+                {
+                  "name" : "Adele",
+                  "phone" : {
+                    "country_code" : "1",
+                    "number" : "123456789"
+                  }
+                }
+              </code></pre>
+            </div>
+
+            <div class="mdl-card__title">
+              <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Events</h5>
+            </div>
+
+            <ul class="mdl-list">
+              <li class="mdl-list__item mdl-list__item--three-line">
+                <span class="mdl-list__item-primary-content">
+                  <i class="material-icons mdl-list__item-icon">view_headline</i>
+                  <span>Queued</span>
+                  <span class="mdl-list__item-text-body">
+                    Tue, October 11th 02:42:23 pm
+                  </span>
+                </span>
+              </li>
+
+              <li class="mdl-list__item mdl-list__item--three-line">
+                <span class="mdl-list__item-primary-content">
+                  <i class="material-icons mdl-list__item-icon">publish</i>
+                  <span>Activated</span>
+                  <span class="mdl-list__item-text-body">
+                    Tue, October 11th 02:43:11 pm
+                  </span>
+                </span>
+              </li>
+
+              <li class="mdl-list__item mdl-list__item--three-line">
+                <span class="mdl-list__item-primary-content">
+                  <i class="material-icons mdl-list__item-icon">cached</i>
+                  <span>Processed</span>
+                  <span class="mdl-list__item-text-body">
+                    Tue, October 11th 02:43:20 pm
+                  </span>
+                </span>
+              </li>
+
+              <li class="mdl-list__item mdl-list__item--three-line">
+                <span class="mdl-list__item-primary-content">
+                  <i class="material-icons mdl-list__item-icon">done</i>
+                  <span>Completed</span>
+                  <span class="mdl-list__item-text-body">
+                    Tue, October 11th 02:43:22 pm
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
       </section>
 
     </main>
-
-    <footer class="mdl-mini-footer">
-      <div class="mdl-mini-footer__left-section">
-        <div class="mdl-logo">
-          Firebase Queue UI
-        </div>
-
-        <ul class="mdl-mini-footer__link-list">
-          <li><a href="https://github.com/isapp/firebase-queue-ui">GitHub</a></li>
-        </ul>
-      </div>
-    </footer>
 
   </div>
 

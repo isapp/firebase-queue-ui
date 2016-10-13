@@ -2,16 +2,12 @@
  * Card
  */
 
-.card {
-  margin: 0 auto;
+.mdl-card {
+  margin: rem-calc(15) auto;
   width: 100%;
 
-  &--small {
-    max-width: rem-calc(400);
-  }
-
   &--medium {
-    max-width: rem-calc(500);
+    max-width: rem-calc(550);
   }
 
   &--large {
@@ -22,9 +18,16 @@
    * Title
    */
 
-  &__title {
+  &__title-text {
     margin: 0;
+    padding: 0;
+    font-size: rem-calc(22);
     font-weight: 400;
+    color: rgba(#000, .77);
+
+    &--queue {
+      color: rgba(#000, .66);
+    }
   }
 
   /*
@@ -48,10 +51,6 @@
       &:focus {
         outline: 0;
       }
-
-      .is-expanded & {
-        border-bottom: 1px solid rgba(#000, 0.1);
-      }
     }
 
     &__info,
@@ -59,22 +58,27 @@
       height: 0;
       visibility: hidden;
       opacity: 0;
-      transition: all 0.15s ease;
-
-      .is-expanded & {
-        height: auto;
-        visibility: visible;
-        opacity: 1;
-      }
+      transition: 0.15s all ease;
     }
 
     &__info {
       max-height: 0;
-      transition: all 0.5s ease;
-
-      .is-expanded & {
-        max-height: rem-calc(600);
-      }
+      transition: 0.25s all ease;
     }
+  }
+
+  &--expanded &__queue__expand {
+    border-bottom: 1px solid rgba(#000, 0.1);
+  }
+
+  &--expanded &__queue__info,
+  &--expanded &__queue__more {
+    height: auto;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &--expanded &__queue__info {
+    max-height: rem-calc(1080);
   }
 }

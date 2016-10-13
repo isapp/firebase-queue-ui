@@ -6,5 +6,5 @@ $('.js-card-queue-toggle').click(function (e) {
 
   e.preventDefault();
 
-  $(this).closest('.js-card-queue').toggleClass('is-expanded');
+  $(this).closest('.js-card-queue').toggleClass('mdl-card--expanded');
 });

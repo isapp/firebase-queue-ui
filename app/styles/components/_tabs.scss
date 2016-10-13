@@ -1,9 +1,9 @@
 /*
- * Icon
+ * Tabs
  */
 
-.icon {
-  &--tab.material-icons {
+.mdl-layout__tab-bar {
+  .material-icons {
     position: relative;
     top: -1px;
     font-size: rem-calc(20);

@@ -2,18 +2,30 @@
  * List
  */
 
-.list {
+.mdl-list {
   margin: 0;
   padding: 0;
 
-  /*
-   * Icon
-   */
+  &__item {
+    height: auto;
 
-   &__icon.material-icons {
-     margin-right: rem-calc(20);
-     width: rem-calc(36);
-     height: rem-calc(36);
-     font-size: rem-calc(36);
-   }
+    &:first-child {
+      padding-top: rem-calc(5);
+    }
+
+    &-text-body,
+    & &-three-line &-text-body, {
+      height: auto;
+    }
+
+    &-icon,
+    & &-primary-content &-icon  {
+      position: relative;
+      top: 1px;
+      margin-right: rem-calc(15);
+      width: rem-calc(36);
+      height: rem-calc(36);
+      font-size: rem-calc(36);
+    }
+  }
 }
