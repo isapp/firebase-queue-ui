@@ -51,6 +51,7 @@
     }
   },
   "dependencies": {
+    "jQuery.toggleModifier": "^1.0.0",
     "jquery": "^3.1.1",
     "material-design-lite": "^1.2.1",
     "normalize.css": "^5.0.0"
