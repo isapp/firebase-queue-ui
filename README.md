@@ -6,14 +6,14 @@
 
 ### Setup
 
-Run the commands below to install dependencies
+Run the commands below to clone and install dependencies
 
 ```bash
 git clone git@github.com:isapp/firebase-queue-ui.git && cd firebase-queue-ui
 ```
 
 ```bash
-npm install && bower install
+npm install
 ```
 
 ### Preview
@@ -40,9 +40,6 @@ Run to execute tests
 gulp test
 ```
 
-## Contribute
-
-
 ## License
 
-See [LICENSE](LICENSE)
+[MIT](LICENSE)
