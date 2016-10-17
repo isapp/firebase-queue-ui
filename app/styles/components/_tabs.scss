@@ -2,11 +2,49 @@
  * Tabs
  */
 
+.mdl-layout__tab-bar,
+.mdl-layout__tab-bar-container {
+  .mdl-layout:not(.is-small-screen) & {
+    overflow: visible;
+  }
+}
+
 .mdl-layout__tab-bar {
-  .material-icons {
+  .mdl-layout:not(.is-small-screen) & {
+    padding: 0;
+    padding-left: rem-calc(16);
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .mdl-layout__tab .material-icons {
     position: relative;
     top: -1px;
     font-size: rem-calc(20);
     vertical-align: middle;
   }
+
+  .mdl-button {
+    position: absolute;
+    right: rem-calc(40);
+    top: rem-calc(18);
+    z-index: 99;
+
+    .material-icons {
+      color: #fff;
+    }
+  }
+}
+
+.mdl-layout__tab-bar-button {
+  background-color: #1976d2;
+
+  .mdl-layout:not(.is-small-screen) & {
+    display: none;
+  }
+}
+
+.mdl-layout.is-small-screen .mdl-layout__tab-bar .mdl-button {
+  display: none;
 }
