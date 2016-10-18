@@ -51,6 +51,8 @@
     }
   },
   "dependencies": {
+    "dotenv": "^2.0.0",
+    "firebase": "^3.5.0",
     "jQuery.toggleModifier": "^1.0.0",
     "jquery": "^3.1.1",
     "material-design-lite": "^1.2.1",

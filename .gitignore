@@ -2,6 +2,5 @@ node_modules
 public
 .tmp
 .DS_Store
-bower_components
-test/bower_components
+.env
 xunit.xml

@@ -1,4 +1,6 @@
 'use strict';
 
-import 'material-design-lite/material';
+import './config.js';
 import './card.js';
+
+import 'material-design-lite/material';
