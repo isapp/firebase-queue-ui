@@ -3,9 +3,9 @@
 import $ from 'jquery';
 import 'jQuery.toggleModifier'
 
-$('.js-card-queue-toggle').click(function (e) {
+$('.js-card-queue-toggle').click( (e) => {
 
-  e.preventDefault();
+    e.preventDefault();
 
-  $(this).closest('.js-card-queue').toggleModifier('expanded');
+    $(this).closest('.js-card-queue').toggleModifier('expanded');
 });

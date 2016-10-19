@@ -8,6 +8,7 @@ const browserify = require('browserify');
 const gutil = require('gulp-util');
 const sass = require('node-sass');
 const path = require('path');
+const dotenv = require('dotenv');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -34,12 +35,12 @@ gulp.task('styles', () => {
 gulp.task('scripts', () => {
   return gulp.src('app/scripts/**/*.js', {read: false})
     .pipe($.plumber({
-      errorHandler: function (err) {
+      errorHandler: (err) => {
         console.log(err);
         this.emit('end');
       }
     }))
-    .pipe($.tap(function (file) {
+    .pipe($.tap( (file) => {
       gutil.log('bundling ' + file.path);
       file.contents = browserify(file.path, {debug: true}).bundle();
     }))
@@ -103,10 +104,17 @@ gulp.task('extras', () => {
   }).pipe(gulp.dest('public'));
 });
 
+gulp.task('dotenv', () => {
+  return gulp.src('.env')
+    .pipe(dotenv())
+    .pipe(rename('env.json'))
+    .pipe(gulp.dest('public'));
+});
+
 gulp.task('clean', del.bind(null, ['.tmp', 'public']));
 
 gulp.task('serve', () => {
-  runSequence(['clean'], ['styles', 'scripts', 'fonts'], () => {
+  runSequence(['clean'], ['styles', 'scripts', 'fonts', 'dotenv'], () => {
     browserSync({
       notify: false,
       port: 9000,
@@ -145,7 +153,7 @@ gulp.task('test', () =>
     .pipe(mocha({reporter: 'xunit-file'}))
 );
 
-gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras', 'dotenv'], () => {
   return gulp.src('public/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 

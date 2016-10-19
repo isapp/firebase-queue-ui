@@ -3,4 +3,5 @@ public
 .tmp
 .DS_Store
 .env
+env.json
 xunit.xml
