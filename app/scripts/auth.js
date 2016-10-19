@@ -1,11 +1,20 @@
-require('firebase/auth');
+import $ from 'jquery';
+const _ = require('underscore');
+const firebase = require('firebase/auth');
 
 class Auth {
     constructor() {
-        $('.js-auth-form').submit( () => {
-            const values = $(this).serialize();
+        $('.js-auth-form:input').submit( (e) => {
+            e.preventDefault();
+            const values = $(this).serializeArray();
+
+            console.log('submitted');
 
             console.log(values);
+
+            _.object($(this).serializeArray().map(function(v) {
+                console.log([v.name, v.value]);
+            }));
         });
     }
 
@@ -23,9 +32,9 @@ class Auth {
         firebase.auth().signOut().then( () => {
 
         }, (error) => {
-            
+
         });
     }
 }
 
-module.exports = Auth
+module.exports = new Auth();
