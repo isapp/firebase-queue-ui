@@ -1,6 +1,5 @@
 const firebase = require('firebase/app');
-const envFile = require('../env.json');
-const env = JSON.parse(envFile);
+const env = require('../env.json');
 
 var config = {
     apiKey: env.API_KEY,
