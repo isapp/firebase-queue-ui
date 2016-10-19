@@ -34,12 +34,7 @@ gulp.task('styles', () => {
 
 gulp.task('scripts', () => {
   return gulp.src('app/scripts/**/*.js', {read: false})
-    .pipe($.plumber({
-      errorHandler: (err) => {
-        console.log(err);
-        this.emit('end');
-      }
-    }))
+    .pipe($.plumber())
     .pipe($.tap( (file) => {
       gutil.log('bundling ' + file.path);
       file.contents = browserify(file.path, {debug: true}).bundle();
@@ -106,9 +101,9 @@ gulp.task('extras', () => {
 
 gulp.task('dotenv', () => {
   return gulp.src('.env')
-    .pipe(dotenv())
-    .pipe(rename('env.json'))
-    .pipe(gulp.dest('public'));
+    .pipe($.dotenv())
+    .pipe($.rename('env.json'))
+    .pipe(gulp.dest('app'));
 });
 
 gulp.task('clean', del.bind(null, ['.tmp', 'public']));
@@ -128,13 +123,15 @@ gulp.task('serve', () => {
 
     gulp.watch([
       'app/*.html',
-        'app/images/**/*',
-      '.tmp/fonts/**/*'
+      'app/images/**/*',
+      '.tmp/fonts/**/*',
+      '.env',
     ]).on('change', reload);
 
     gulp.watch('app/styles/**/*.scss', ['styles']);
     gulp.watch('app/scripts/**/*.js', ['scripts']);
     gulp.watch('app/fonts/**/*', ['fonts']);
+    gulp.watch('.env', ['dotenv']);
   });
 });
 
