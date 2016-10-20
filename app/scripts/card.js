@@ -1,7 +1,7 @@
 'use strict';
 
 import $ from 'jquery';
-import 'jQuery.toggleModifier'
+require('jQuery.toggleModifier');
 
 $('.js-card-queue-toggle').click( (e) => {
 

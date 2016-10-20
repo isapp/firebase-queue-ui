@@ -1,40 +1,70 @@
 import $ from 'jquery';
-const _ = require('underscore');
-const firebase = require('firebase/auth');
+const firebase = require('firebase');
+
+require('./config.js');
+const Form = require('./form.js');
 
 class Auth {
-    constructor() {
-        $('.js-auth-form:input').submit( (e) => {
-            e.preventDefault();
-            const values = $(this).serializeArray();
 
-            console.log('submitted');
+    handleSignIn (email, password) {
 
-            console.log(values);
-
-            _.object($(this).serializeArray().map(function(v) {
-                console.log([v.name, v.value]);
-            }));
-        });
+        if (firebase.auth().currentUser) {
+            firebase.auth().signOut();
+        } else {
+            this.signin(username, password);
+        }
     }
 
     signin (email, password) {
+
         firebase.auth().signInWithEmailAndPassword(email, password).catch( (error) => {
+
             const errorCode = error.code;
             const errorMessage = error.message;
 
-            console.log(errorCode);
-            console.log(errorMessage);
+            if (errorCode === 'auth/wrong-password') {
+                
+                Form.showError('js-auth-form-password-wrapper', 'js-mdl-textfield-error', errorMessage);
+            } else {
+
+                Form.showError('js-auth-form-username-wrapper', 'js-mdl-textfield-error', errorMessage);
+            }
         });
     }
 
     signout () {
+
         firebase.auth().signOut().then( () => {
 
+            // Success signing out
         }, (error) => {
 
+            // Error signing out
+        });
+    }
+
+    handleRedirect () {
+        firebase.auth().onAuthStateChanged( (user) => {
+
+          if (user) {
+
+            // User is signed in.
+          }
         });
     }
 }
 
-module.exports = new Auth();
+const auth = new Auth();
+
+$('.js-auth-form').submit( (e) => {
+
+    var $this = $(e.currentTarget);
+    e.preventDefault();
+
+    const username = $this.find('.js-auth-form-username').val();
+    const password = $this.find('.js-auth-form-password').val();
+
+    Form.toggleDisable($this);
+    Form.toggleLoading($this);
+    auth.signin(username, password);
+});

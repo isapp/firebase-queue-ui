@@ -1,7 +1,7 @@
-const firebase = require('firebase/app');
+const firebase = require('firebase');
 const env = require('../env.json');
 
-var config = {
+let config = {
     apiKey: env.API_KEY,
     authDomain: env.AUTH_DOMAIN,
     databaseURL: env.DATABASE_URL,

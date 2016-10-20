@@ -48,14 +48,16 @@
           <form class="js-auth-form">
             <div class="h-s-p-16 h-s-pt-0">
 
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="username" name="username">
+              <div class="mdl-textfield mdl-js-textfield js-auth-form-username-wrapper mdl-textfield--floating-label">
+                <input class="mdl-textfield__input js-auth-form-username" type="text" id="username" name="username">
                 <label class="mdl-textfield__label" for="username">Username</label>
+                <span class="mdl-textfield__error js-mdl-textfield-error"></span>
               </div>
 
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="password" id="password" name="password">
+              <div class="mdl-textfield mdl-js-textfield js-auth-form-password-wrapper mdl-textfield--floating-label">
+                <input class="mdl-textfield__input js-auth-form-password" type="password" id="password" name="password">
                 <label class="mdl-textfield__label" for="password">Password</label>
+                <span class="mdl-textfield__error js-mdl-textfield-error"></span>
               </div>
 
               <div class="h-align-text-right">
