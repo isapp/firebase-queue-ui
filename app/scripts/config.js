@@ -1,3 +1,5 @@
+'use strict';
+
 const firebase = require('firebase');
 const env = require('../env.json');
 

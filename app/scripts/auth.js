@@ -1,15 +1,23 @@
+'use strict';
+
 import $ from 'jquery';
 const firebase = require('firebase');
 
 require('./config.js');
 const Form = require('./form.js');
 
+const auth = firebase.auth();
+
 class Auth {
 
     constructor () {
+
+        auth.signInWithRedirect();
+        this.handleRedirect();
+
         $('.js-auth-form').submit( (e) => {
 
-            let target = $(e.currentTarget);
+            const target = $(e.currentTarget);
             e.preventDefault();
 
             const username = $(target).find('.js-auth-form-username').val();
@@ -23,16 +31,18 @@ class Auth {
 
     handleSignIn (email, password) {
 
-        if (firebase.auth().currentUser) {
-            firebase.auth().signOut();
+        if (auth.currentUser) {
+
+            auth.signOut();
         } else {
+            
             this.signin(username, password);
         }
     }
 
     signin (email, password) {
 
-        firebase.auth().signInWithEmailAndPassword(email, password).catch( (error) => {
+        auth.signInWithEmailAndPassword(email, password).catch( (error) => {
 
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -49,23 +59,14 @@ class Auth {
 
     signout () {
 
-        firebase.auth().signOut().then( () => {
+        auth.signOut().then( () => {
 
-            // Success signing out
-        }, (error) => {
-
-            // Error signing out
-        });
+            document.location.href = '/';
+        };
     }
 
     handleRedirect () {
-        firebase.auth().onAuthStateChanged( (user) => {
 
-          if (user) {
-
-            // User is signed in.
-          }
-        });
     }
 }
 
