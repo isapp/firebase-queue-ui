@@ -6,6 +6,21 @@ const Form = require('./form.js');
 
 class Auth {
 
+    constructor () {
+        $('.js-auth-form').submit( (e) => {
+
+            var $this = $(e.currentTarget);
+            e.preventDefault();
+
+            const username = $this.find('.js-auth-form-username').val();
+            const password = $this.find('.js-auth-form-password').val();
+
+            Form.toggleDisable($this);
+            Form.toggleLoading($this);
+            this.signin(username, password);
+        });
+    }
+
     handleSignIn (email, password) {
 
         if (firebase.auth().currentUser) {
@@ -23,11 +38,11 @@ class Auth {
             const errorMessage = error.message;
 
             if (errorCode === 'auth/wrong-password') {
-                
-                Form.showError('js-auth-form-password-wrapper', 'js-mdl-textfield-error', errorMessage);
+
+                Form.showError('.js-auth-form-password-wrapper', '.js-mdl-textfield-error', errorMessage);
             } else {
 
-                Form.showError('js-auth-form-username-wrapper', 'js-mdl-textfield-error', errorMessage);
+                Form.showError('.js-auth-form-username-wrapper', '.js-mdl-textfield-error', errorMessage);
             }
         });
     }
@@ -54,17 +69,4 @@ class Auth {
     }
 }
 
-const auth = new Auth();
-
-$('.js-auth-form').submit( (e) => {
-
-    var $this = $(e.currentTarget);
-    e.preventDefault();
-
-    const username = $this.find('.js-auth-form-username').val();
-    const password = $this.find('.js-auth-form-password').val();
-
-    Form.toggleDisable($this);
-    Form.toggleLoading($this);
-    auth.signin(username, password);
-});
+module.exports = new Auth();

@@ -13,6 +13,7 @@ class Form {
     }
 
     showError (el, targetMessage, message) {
+
         $(el).addClass('is-invalid');
         $(el).find(targetMessage).text(message);
     }
