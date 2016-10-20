@@ -9,14 +9,14 @@ class Auth {
     constructor () {
         $('.js-auth-form').submit( (e) => {
 
-            var $this = $(e.currentTarget);
+            let target = $(e.currentTarget);
             e.preventDefault();
 
-            const username = $this.find('.js-auth-form-username').val();
-            const password = $this.find('.js-auth-form-password').val();
+            const username = $(target).find('.js-auth-form-username').val();
+            const password = $(target).find('.js-auth-form-password').val();
 
-            Form.toggleDisable($this);
-            Form.toggleLoading($this);
+            Form.toggleDisable(target);
+            Form.toggleLoading(target);
             this.signin(username, password);
         });
     }
