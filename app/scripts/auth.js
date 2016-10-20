@@ -12,7 +12,6 @@ class Auth {
 
     constructor () {
 
-        auth.signInWithRedirect();
         this.handleRedirect();
 
         $('.js-auth-form').submit( (e) => {
@@ -35,7 +34,7 @@ class Auth {
 
             auth.signOut();
         } else {
-            
+
             this.signin(username, password);
         }
     }
@@ -62,7 +61,7 @@ class Auth {
         auth.signOut().then( () => {
 
             document.location.href = '/';
-        };
+        });
     }
 
     handleRedirect () {
