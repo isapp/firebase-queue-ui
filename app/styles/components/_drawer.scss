@@ -1,0 +1,26 @@
+/*
+ * Drawer
+ */
+
+@media screen and (min-width: 1025px) {
+  .mdl-layout--fixed-drawer > .mdl-layout__drawer {
+    transform: translateY(rem-calc(73));
+  }
+
+  .mdl-layout__drawer {
+    & > &__title {
+      font-size: rem-calc(16);
+      font-weight: 500;
+      line-height: 48px;
+      color: rgba(#000, .65);
+    }
+
+    &-button {
+      display: none;
+    }
+
+    .mdl-navigation {
+      padding-top: 0;
+    }
+  }
+}

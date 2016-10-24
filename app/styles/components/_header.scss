@@ -1,0 +1,8 @@
+/*
+ * Header
+ */
+
+.mdl-layout--fixed-drawer.is-upgraded:not(.is-small-screen) > .mdl-layout__header {
+  margin-left: 0;
+  width: calc(100%);
+}

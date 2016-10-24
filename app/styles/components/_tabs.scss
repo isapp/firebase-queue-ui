@@ -9,6 +9,11 @@
   }
 }
 
+.mdl-layout--fixed-drawer.is-upgraded:not(.is-small-screen) .mdl-layout__tab-bar-container {
+  margin-left: 240px;
+  width: calc(100% - 240px);
+}
+
 .mdl-layout__tab-bar {
   .mdl-layout:not(.is-small-screen) & {
     padding: 0;

@@ -20,15 +20,17 @@
 </head>
 <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
 
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
 
     <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
       <div class="mdl-layout__header-row">
+
         <span class="mdl-layout-title">
           <span class="logo h-s-mr-10"></span>
 
           <span class="logo__text">Firebase Queue UI</span>
         </span>
+
       </div>
 
       <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
@@ -44,6 +46,25 @@
       </div>
     </header>
 
+    <section class="mdl-layout__drawer">
+      <span class="mdl-layout-title mdl-layout__drawer__title">Queues</span>
+
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="#">Device</a>
+        <a class="mdl-navigation__link" href="#">Friendship</a>
+        <a class="mdl-navigation__link" href="#">Location</a>
+        <a class="mdl-navigation__link" href="#">Message</a>
+        <a class="mdl-navigation__link" href="#">Notification</a>
+        <a class="mdl-navigation__link" href="#">User</a>
+      </nav>
+
+      <span class="mdl-layout-title mdl-layout__drawer__title h-s-pt-15">Account</span>
+
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link js-logout" href="#">Logout</a>
+      </nav>
+    </section>
+
     <main class="mdl-layout__content">
 
       <section class="section section--center">
@@ -51,7 +72,10 @@
         <div class="mdl-card mdl-card__queue mdl-card--large mdl-shadow--2dp js-card-queue">
           <a href="#" class="mdl-card__queue__expand js-card-queue-toggle">
             <div class="mdl-card__title">
-              <h5 class="mdl-card__title-text mdl-color-text--grey-700">Icon Queue Item Name</h5>
+              <h5 class="mdl-card__title-text mdl-color-text--grey-700">
+                <i class="material-icons md-light icon--tab h-s-pr-10">line_weight</i>
+                Queue Item Name
+              </h5>
             </div>
           </a>
 
@@ -83,62 +107,19 @@
               </code></pre>
             </div>
 
-            <div class="mdl-card__title">
-              <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Events</h5>
-            </div>
-
             <div class="mdl-card__supporting-text">
-              Last Updated:
+              <b>Last Updated:</b> Tue, October 11th 02:42:23 pm
             </div>
-
-            <ul class="mdl-list">
-              <li class="mdl-list__item mdl-list__item--three-line">
-                <span class="mdl-list__item-primary-content">
-                  <i class="material-icons mdl-list__item-icon">view_headline</i>
-                  <span>Queued</span>
-                  <span class="mdl-list__item-text-body">
-                    Tue, October 11th 02:42:23 pm
-                  </span>
-                </span>
-              </li>
-
-              <li class="mdl-list__item mdl-list__item--three-line">
-                <span class="mdl-list__item-primary-content">
-                  <i class="material-icons mdl-list__item-icon">publish</i>
-                  <span>Activated</span>
-                  <span class="mdl-list__item-text-body">
-                    Tue, October 11th 02:43:11 pm
-                  </span>
-                </span>
-              </li>
-
-              <li class="mdl-list__item mdl-list__item--three-line">
-                <span class="mdl-list__item-primary-content">
-                  <i class="material-icons mdl-list__item-icon">cached</i>
-                  <span>Processed</span>
-                  <span class="mdl-list__item-text-body">
-                    Tue, October 11th 02:43:20 pm
-                  </span>
-                </span>
-              </li>
-
-              <li class="mdl-list__item mdl-list__item--three-line">
-                <span class="mdl-list__item-primary-content">
-                  <i class="material-icons mdl-list__item-icon">done</i>
-                  <span>Completed</span>
-                  <span class="mdl-list__item-text-body">
-                    Tue, October 11th 02:43:22 pm
-                  </span>
-                </span>
-              </li>
-            </ul>
           </div>
         </div>
 
         <div class="mdl-card mdl-card__queue mdl-card--large mdl-shadow--2dp js-card-queue">
           <a href="#" class="mdl-card__queue__expand js-card-queue-toggle">
             <div class="mdl-card__title">
-              <h5 class="mdl-card__title-text mdl-color-text--grey-700">Queue Item Name</h5>
+              <h5 class="mdl-card__title-text mdl-color-text--grey-700">
+                <i class="material-icons md-light icon--tab h-s-pr-10">cached</i>
+                Queue Item Name
+              </h5>
             </div>
           </a>
 
@@ -170,58 +151,19 @@
               </code></pre>
             </div>
 
-            <div class="mdl-card__title">
-              <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Events</h5>
+            <div class="mdl-card__supporting-text">
+              <b>Last Updated:</b> Tue, October 11th 02:42:23 pm
             </div>
-
-            <ul class="mdl-list">
-              <li class="mdl-list__item mdl-list__item--three-line">
-                <span class="mdl-list__item-primary-content">
-                  <i class="material-icons mdl-list__item-icon">view_headline</i>
-                  <span>Queued</span>
-                  <span class="mdl-list__item-text-body">
-                    Tue, October 11th 02:42:23 pm
-                  </span>
-                </span>
-              </li>
-
-              <li class="mdl-list__item mdl-list__item--three-line">
-                <span class="mdl-list__item-primary-content">
-                  <i class="material-icons mdl-list__item-icon">publish</i>
-                  <span>Activated</span>
-                  <span class="mdl-list__item-text-body">
-                    Tue, October 11th 02:43:11 pm
-                  </span>
-                </span>
-              </li>
-
-              <li class="mdl-list__item mdl-list__item--three-line">
-                <span class="mdl-list__item-primary-content">
-                  <i class="material-icons mdl-list__item-icon">cached</i>
-                  <span>Processed</span>
-                  <span class="mdl-list__item-text-body">
-                    Tue, October 11th 02:43:20 pm
-                  </span>
-                </span>
-              </li>
-
-              <li class="mdl-list__item mdl-list__item--three-line">
-                <span class="mdl-list__item-primary-content">
-                  <i class="material-icons mdl-list__item-icon">done</i>
-                  <span>Completed</span>
-                  <span class="mdl-list__item-text-body">
-                    Tue, October 11th 02:43:22 pm
-                  </span>
-                </span>
-              </li>
-            </ul>
           </div>
         </div>
 
         <div class="mdl-card mdl-card__queue mdl-card--large mdl-shadow--2dp js-card-queue">
           <a href="#" class="mdl-card__queue__expand js-card-queue-toggle">
             <div class="mdl-card__title">
-              <h5 class="mdl-card__title-text mdl-color-text--grey-700">Queue Item Name</h5>
+              <h5 class="mdl-card__title-text mdl-color-text--grey-700">
+                <i class="material-icons md-light icon--tab h-s-pr-10">close</i>
+                Queue Item Name
+              </h5>
             </div>
           </a>
 
@@ -253,51 +195,9 @@
               </code></pre>
             </div>
 
-            <div class="mdl-card__title">
-              <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Events</h5>
+            <div class="mdl-card__supporting-text">
+              <b>Last Updated:</b> Tue, October 11th 02:42:23 pm
             </div>
-
-            <ul class="mdl-list">
-              <li class="mdl-list__item mdl-list__item--three-line">
-                <span class="mdl-list__item-primary-content">
-                  <i class="material-icons mdl-list__item-icon">view_headline</i>
-                  <span>Queued</span>
-                  <span class="mdl-list__item-text-body">
-                    Tue, October 11th 02:42:23 pm
-                  </span>
-                </span>
-              </li>
-
-              <li class="mdl-list__item mdl-list__item--three-line">
-                <span class="mdl-list__item-primary-content">
-                  <i class="material-icons mdl-list__item-icon">publish</i>
-                  <span>Activated</span>
-                  <span class="mdl-list__item-text-body">
-                    Tue, October 11th 02:43:11 pm
-                  </span>
-                </span>
-              </li>
-
-              <li class="mdl-list__item mdl-list__item--three-line">
-                <span class="mdl-list__item-primary-content">
-                  <i class="material-icons mdl-list__item-icon">cached</i>
-                  <span>Processed</span>
-                  <span class="mdl-list__item-text-body">
-                    Tue, October 11th 02:43:20 pm
-                  </span>
-                </span>
-              </li>
-
-              <li class="mdl-list__item mdl-list__item--three-line">
-                <span class="mdl-list__item-primary-content">
-                  <i class="material-icons mdl-list__item-icon">done</i>
-                  <span>Completed</span>
-                  <span class="mdl-list__item-text-body">
-                    Tue, October 11th 02:43:22 pm
-                  </span>
-                </span>
-              </li>
-            </ul>
           </div>
         </div>
 
