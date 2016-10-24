@@ -1,9 +1,10 @@
 'use strict';
 
-import $ from 'jquery';
+const $ = require('jquery');
 const firebase = require('firebase');
 
 require('./config.js');
+const Form = require('./form.js');
 
 const auth = firebase.auth();
 
@@ -34,16 +35,9 @@ class Session {
 
     signIn (email, password) {
 
-        auth.signInWithEmailAndPassword(email, password).resolve( () => {
+        auth.signInWithEmailAndPassword(email, password).catch( (error) => {
 
-            console.log('User logged in');
-
-            this.check();
-        }).reject( (error) => {
-
-            console.log('User not logged in');
-
-            this.signInError();
+            this.signInError(error);
         });
     }
 
@@ -65,7 +59,7 @@ class Session {
 
         auth.signOut().then( () => {
 
-            document.location.href = '/';
+            this.check();
         });
     }
 }

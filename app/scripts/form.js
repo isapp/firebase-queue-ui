@@ -1,6 +1,6 @@
 'use strict';
 
-import $ from 'jquery';
+const $ = require('jquery');
 
 class Form {
 
@@ -21,6 +21,7 @@ class Form {
     }
 
     hideError (el, targetMessage) {
+
         $(el).removeClass('is-invalid');
         $(el).find(targetMessage).empty();
     }

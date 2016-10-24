@@ -1,11 +1,12 @@
 'use strict';
 
-import $ from 'jquery';
+const $ = require('jquery');
 require('jQuery.toggleModifier');
 
 $('.js-card-queue-toggle').click( (e) => {
 
     e.preventDefault();
+    const target = $(e.currentTarget);
 
-    $(this).closest('.mdl-card').toggleModifier('expanded');
+    $(target).closest('.js-card-queue').toggleModifier('expanded');
 });

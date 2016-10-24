@@ -1,6 +1,6 @@
 'use strict';
 
-import $ from 'jquery';
+const $ = require('jquery');
 const firebase = require('firebase');
 
 require('./config.js');
@@ -14,7 +14,7 @@ class Auth {
     constructor () {
 
         Session.check();
-        
+
         $('.js-auth-form').submit( (e) => {
 
             const target = $(e.currentTarget);
@@ -31,7 +31,7 @@ class Auth {
 
     handleSignIn (email, password) {
 
-        Session.signIn();
+        Session.signIn(email, password);
     }
 
     signout () {

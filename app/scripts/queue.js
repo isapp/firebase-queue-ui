@@ -1,6 +1,6 @@
 'use strict';
 
-import $ from 'jquery';
+const $ = require('jquery');
 const firebase = require('firebase');
 
 require('./config.js');
@@ -11,6 +11,12 @@ class Queue {
     constructor () {
 
         Session.check();
+
+        $('.js-logout').click( (e) => {
+            e.preventDefault();
+
+            Session.logout();
+        });
     }
 }
 
