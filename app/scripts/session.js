@@ -13,21 +13,13 @@ class Session {
     check () {
 
         auth.onAuthStateChanged(function(user) {
-            if (user) {
+            if (!user) {
 
-                const queuepage = '/queue.html';
-
-                if (document.location.pathname !== queuepage) {
-
-                    document.location.href = '/queue.html';
-                }
-            } else {
-
-                const authpage = '/';
+                const authpage = '/login';
 
                 if (document.location.pathname !== authpage) {
 
-                    document.location.href = '/';
+                    document.location.href = authpage;
                 }
             }
         });
@@ -35,7 +27,15 @@ class Session {
 
     signIn (email, password) {
 
-        auth.signInWithEmailAndPassword(email, password).catch( (error) => {
+        auth.signInWithEmailAndPassword(email, password).then( () => {
+
+            const queuepage = '/queue';
+
+            if (document.location.pathname !== queuepage) {
+
+                document.location.href = queuepage;
+            }
+        }).catch( (error) => {
 
             this.signInError(error);
         });
