@@ -1,12 +1,12 @@
 'use strict';
 
 const $ = require('jquery');
-const firebase = require('firebase');
+const Firebase = require('firebase');
 
 require('./config.js');
 const Form = require('./form.js');
 
-const auth = firebase.auth();
+const auth = Firebase.auth();
 
 class Session {
 

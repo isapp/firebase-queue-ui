@@ -69,136 +69,44 @@
 
       <section class="section section--center">
 
-        <div class="mdl-card mdl-card__queue mdl-card--large mdl-shadow--2dp js-card-queue">
-          <a href="#" class="mdl-card__queue__expand js-card-queue-toggle">
-            <div class="mdl-card__title">
-              <h5 class="mdl-card__title-text mdl-color-text--grey-700">
-                <i class="material-icons md-light icon--tab h-s-pr-10">line_weight</i>
-                Queue Item Name
-              </h5>
-            </div>
-          </a>
+        <div id="js-card">
 
-          <div class="mdl-card__menu mdl-card__queue__more">
-            <button id="action" class="mdl-button mdl-js-button mdl-button--icon">
-              <i class="material-icons">more_vert</i>
-            </button>
-          </div>
+          <div class="mdl-card mdl-card__queue mdl-card--large mdl-shadow--2dp js-card-queue" v-for="item in anObject">
+            <a href="#" class="mdl-card__queue__expand js-card-queue-toggle">
+              <div class="mdl-card__title">
+                <h5 class="mdl-card__title-text mdl-color-text--grey-700">
+                  <i class="material-icons md-light icon--tab h-s-pr-10"></i>
+                  {{ item.action }}
+                </h5>
+              </div>
+            </a>
 
-          <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="action">
-            <li class="mdl-menu__item">Retry</li>
-            <li class="mdl-menu__item">Remove</li>
-          </ul>
-
-          <div class="mdl-card__queue__info">
-            <div class="mdl-card__title">
-              <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Data</h5>
+            <div class="mdl-card__menu mdl-card__queue__more">
+              <button id="action" class="mdl-button mdl-js-button mdl-button--icon">
+                <i class="material-icons">more_vert</i>
+              </button>
             </div>
 
-            <div class="mdl-card__supporting-text">
-              <pre><code class="js-highlight-syntax">
-                {
-                  "name" : "Adele",
-                  "phone" : {
-                    "country_code" : "1",
-                    "number" : "123456789"
-                  }
-                }
-              </code></pre>
-            </div>
+            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="action">
+              <li class="mdl-menu__item">Retry</li>
+              <li class="mdl-menu__item">Remove</li>
+            </ul>
 
-            <div class="mdl-card__supporting-text">
-              <b>Last Updated:</b> Tue, October 11th 02:42:23 pm
+            <div class="mdl-card__queue__info">
+              <div class="mdl-card__title">
+                <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Data</h5>
+              </div>
+
+              <div class="mdl-card__supporting-text">
+                <pre>{{ item.headers }}</pre>
+              </div>
+
+              <div class="mdl-card__supporting-text">
+                <b>Last Updated:</b> -
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="mdl-card mdl-card__queue mdl-card--large mdl-shadow--2dp js-card-queue">
-          <a href="#" class="mdl-card__queue__expand js-card-queue-toggle">
-            <div class="mdl-card__title">
-              <h5 class="mdl-card__title-text mdl-color-text--grey-700">
-                <i class="material-icons md-light icon--tab h-s-pr-10">cached</i>
-                Queue Item Name
-              </h5>
-            </div>
-          </a>
-
-          <div class="mdl-card__menu mdl-card__queue__more">
-            <button id="action" class="mdl-button mdl-js-button mdl-button--icon">
-              <i class="material-icons">more_vert</i>
-            </button>
-          </div>
-
-          <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="action">
-            <li class="mdl-menu__item">Retry</li>
-            <li class="mdl-menu__item">Remove</li>
-          </ul>
-
-          <div class="mdl-card__queue__info">
-            <div class="mdl-card__title">
-              <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Data</h5>
-            </div>
-
-            <div class="mdl-card__supporting-text">
-              <pre><code class="js-highlight-syntax">
-                {
-                  "name" : "Adele",
-                  "phone" : {
-                    "country_code" : "1",
-                    "number" : "123456789"
-                  }
-                }
-              </code></pre>
-            </div>
-
-            <div class="mdl-card__supporting-text">
-              <b>Last Updated:</b> Tue, October 11th 02:42:23 pm
-            </div>
-          </div>
-        </div>
-
-        <div class="mdl-card mdl-card__queue mdl-card--large mdl-shadow--2dp js-card-queue">
-          <a href="#" class="mdl-card__queue__expand js-card-queue-toggle">
-            <div class="mdl-card__title">
-              <h5 class="mdl-card__title-text mdl-color-text--grey-700">
-                <i class="material-icons md-light icon--tab h-s-pr-10">close</i>
-                Queue Item Name
-              </h5>
-            </div>
-          </a>
-
-          <div class="mdl-card__menu mdl-card__queue__more">
-            <button id="action" class="mdl-button mdl-js-button mdl-button--icon">
-              <i class="material-icons">more_vert</i>
-            </button>
-          </div>
-
-          <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="action">
-            <li class="mdl-menu__item">Retry</li>
-            <li class="mdl-menu__item">Remove</li>
-          </ul>
-
-          <div class="mdl-card__queue__info">
-            <div class="mdl-card__title">
-              <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Data</h5>
-            </div>
-
-            <div class="mdl-card__supporting-text">
-              <pre><code class="js-highlight-syntax">
-                {
-                  "name" : "Adele",
-                  "phone" : {
-                    "country_code" : "1",
-                    "number" : "123456789"
-                  }
-                }
-              </code></pre>
-            </div>
-
-            <div class="mdl-card__supporting-text">
-              <b>Last Updated:</b> Tue, October 11th 02:42:23 pm
-            </div>
-          </div>
         </div>
 
       </section>

@@ -9,6 +9,7 @@ const gutil = require('gulp-util');
 const sass = require('node-sass');
 const path = require('path');
 const dotenv = require('dotenv');
+const vueify = require('vueify');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -37,7 +38,7 @@ gulp.task('scripts', () => {
     .pipe($.plumber())
     .pipe($.tap( (file) => {
       gutil.log('bundling ' + file.path);
-      file.contents = browserify(file.path, {debug: true}).bundle();
+      file.contents = browserify(file.path, {debug: true}).transform(vueify).bundle();
     }))
     .pipe(gulp.dest('.tmp/scripts'))
     .pipe(reload({stream: true}));

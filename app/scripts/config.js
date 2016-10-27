@@ -1,6 +1,6 @@
 'use strict';
 
-const firebase = require('firebase');
+const Firebase = require('firebase');
 const env = require('../env.json');
 
 let config = {
@@ -11,4 +11,4 @@ let config = {
     messagingSenderId: env.MESSAGING_SENDER_ID
 };
 
-firebase.initializeApp(config);
+Firebase.initializeApp(config);
