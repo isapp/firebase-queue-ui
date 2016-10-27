@@ -10,13 +10,14 @@ require('./config.js');
 const Session = require('./session.js');
 
 const database = Firebase.database();
+Vue.use(VueFire);
+Vue.use(require('vue-moment'));
 
 class Card {
 
     constructor () {
 
         Session.check();
-        Vue.use(VueFire);
         this.get();
 
         $('.js-card-queue-toggle').click( (e) => {
