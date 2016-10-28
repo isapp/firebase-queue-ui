@@ -35,6 +35,31 @@
   }
 
   /*
+   * Supporting Text
+   */
+
+  &__supporting-text {
+    p {
+      display: block;
+      margin-bottom: rem-calc(5);
+    }
+  }
+
+  &__title + &__supporting-text {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  /*
+   * Code
+   */
+
+  &__code {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  /*
    * Menu
    */
 

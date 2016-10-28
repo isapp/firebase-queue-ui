@@ -4,14 +4,13 @@ const $ = require('jquery');
 const Firebase = require('firebase');
 const Vue = require('vue/dist/vue');
 const VueFire = require('vuefire');
-require('jQuery.toggleModifier');
+const Moment = require('moment');
 
 require('./config.js');
 const Session = require('./session.js');
 
 const database = Firebase.database();
 Vue.use(VueFire);
-Vue.use(require('vue-moment'));
 
 class Card {
 
@@ -19,12 +18,6 @@ class Card {
 
         Session.check();
         this.get();
-
-        $('.js-card-queue-toggle').click( (e) => {
-
-            e.preventDefault();
-            $(e.currentTarget).closest('.js-card-queue').toggleModifier('expanded');
-        });
 
         $('.js-logout').click( (e) => {
 
@@ -36,10 +29,27 @@ class Card {
     get () {
         let cards = new Vue({
             el: '#js-card',
+            data: {
+                isExpanded: false
+            },
             firebase: {
                 anObject: {
                     source: database.ref('queue/v1/location/tasks'),
                     asObject: true
+                }
+            },
+            methods: {
+                toggle: function () {
+
+                    this.isExpanded = ! this.isExpanded;
+                },
+                retry: function(e) {
+
+                    console.log(e);
+                },
+                remove: function(e) {
+
+                    console.log(e);
                 }
             }
         });
