@@ -1,6 +1,5 @@
 'use strict';
 
-const $ = require('jquery');
 const Firebase = require('firebase');
 const Vue = require('vue/dist/vue');
 const VueFire = require('vuefire');
@@ -18,12 +17,6 @@ class Card {
 
         Session.check();
         this.get();
-
-        $('.js-logout').click( (e) => {
-
-            e.preventDefault();
-            Session.logout();
-        });
     }
 
     get () {
@@ -33,15 +26,15 @@ class Card {
                 isExpanded: false
             },
             firebase: {
-                anObject: {
+                items: {
                     source: database.ref('queue/v1/location/tasks'),
                     asObject: true
                 }
             },
             methods: {
-                toggle: function () {
+                toggle: function (key, index) {
 
-                    this.isExpanded = ! this.isExpanded;
+                    this.isExpanded = !this.isExpanded;
                 },
                 retry: function(e) {
 

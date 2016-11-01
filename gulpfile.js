@@ -10,6 +10,7 @@ const sass = require('node-sass');
 const path = require('path');
 const dotenv = require('dotenv');
 const vueify = require('vueify');
+const superstatic = require('superstatic');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -118,7 +119,13 @@ gulp.task('serve', () => {
         baseDir: ['.tmp', 'app'],
         routes: {
           '/node_modules': 'node_modules'
-        }
+        },
+        middleware: [
+          superstatic({
+            stack: 'strict',
+            config: require('./firebase-dev.json')
+          })
+        ]
       }
     });
 
@@ -142,7 +149,13 @@ gulp.task('serve:public', () => {
     port: 9000,
     server: {
       baseDir: ['public']
-    }
+    },
+    middleware: [
+      superstatic({
+        stack: 'strict',
+        config: require('./firebase.json')
+      })
+    ]
   });
 });
 

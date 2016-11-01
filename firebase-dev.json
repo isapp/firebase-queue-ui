@@ -1,0 +1,48 @@
+{
+  "public": [".tmp", "app"],
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/login",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/queue/**",
+      "destination": "/queue.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "**/vendor.css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "max-age=7200"
+        }
+      ]
+    },
+    {
+      "source": "**/*.@(svg)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "max-age=7200"
+        }
+      ]
+    },
+    {
+      "source": "404.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "max-age=300"
+        }
+      ]
+    }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
+}

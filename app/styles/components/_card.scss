@@ -5,6 +5,7 @@
 .mdl-card {
   margin: rem-calc(20) auto;
   width: 100%;
+  min-height: auto;
 
   &:first-child {
     margin-top: 0;
@@ -68,32 +69,32 @@
   }
 
   /*
-   * Queue
+   * Expand Anchor
    */
 
-  &__queue {
-    min-height: auto;
+  &__expand {
+    text-decoration: none;
 
-    &__expand {
-      text-decoration: none;
-
-      &:focus {
-        outline: 0;
-      }
+    &:focus {
+      outline: 0;
     }
+  }
 
-    &__info,
-    &__more {
-      height: 0;
-      visibility: hidden;
-      opacity: 0;
-      transition: 0.15s all ease;
-    }
+  /*
+   * Info and More
+   */
 
-    &__info {
-      max-height: 0;
-      transition: 0.25s all ease;
-    }
+  &__info,
+  &__more {
+    height: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.15s all ease;
+  }
+
+  &__info {
+    max-height: 0;
+    transition: 0.25s all ease;
   }
 
   /*
@@ -104,18 +105,22 @@
     top: rem-calc(10);
   }
 
-  &--expanded &__queue__expand {
+  /*
+   * Expanded
+   */
+
+  &--expanded &__expand {
     border-bottom: 1px solid rgba(#000, 0.1);
   }
 
-  &--expanded &__queue__info,
-  &--expanded &__queue__more {
+  &--expanded &__info,
+  &--expanded &__more {
     height: auto;
     visibility: visible;
     opacity: 1;
   }
 
-  &--expanded &__queue__info {
+  &--expanded &__info {
     max-height: rem-calc(1080);
   }
 }
