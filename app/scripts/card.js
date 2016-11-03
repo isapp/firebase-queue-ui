@@ -11,17 +11,37 @@ const Session = require('./session.js');
 const database = Firebase.database();
 Vue.use(VueFire);
 
-const route = window.location.pathname;
-
 class Card {
 
     constructor () {
 
         Session.check();
-        this.get();
+
+        const route = window.location.pathname;
+        this.check(route);
     }
 
-    get () {
+    check (route) {
+
+        route = route.replace(/^(\/)/g, '');
+
+        return new Promise( (resolve, reject) => {
+
+            let databaseSource = database.ref(route);
+
+            if (databaseSource) {
+
+                resolve(this.get(databaseSource));
+            } else {
+
+                console.log('Failed.');
+                reject('Failed.');
+            }
+        });
+    }
+
+    get (database) {
+
         let cards = new Vue({
             el: '#js-card',
             data: {
@@ -29,7 +49,7 @@ class Card {
             },
             firebase: {
                 items: {
-                    source: database.ref(route),
+                    source: database,
                     asObject: true
                 }
             },

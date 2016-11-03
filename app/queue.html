@@ -68,9 +68,28 @@
 
       <section class="section section--center">
 
+        <div id="js-card-error">
+          <div class="mdl-card mdl-shadow--2dp mdl-card--medium">
+
+            <div class="mdl-card__title">
+              <h2 class="mdl-card__title-text">Error</h2>
+            </div>
+
+            <div class="mdl-card__supporting-text">
+              Could not locate your tasks. Are you sure your path <code>{{ path }}</code> is correct?
+            </div>
+
+            <div class="mdl-card__actions mdl-card--border">
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                Try again
+              </a>
+            </div>
+          </div>
+        </div>
+
         <div id="js-card">
 
-          <div class="mdl-card mdl-card--large mdl-shadow--2dp" v-for="(item, key, index) in items" v-bind:class="{ 'mdl-card--expanded': isExpanded }">
+          <div class="mdl-card mdl-card--tasks mdl-card--large mdl-shadow--2dp" v-for="(item, key, index) in items" v-bind:class="{ 'mdl-card--expanded': isExpanded }">
             <a href="" class="mdl-card__expand" v-on:click.stop.prevent="toggle(key, index)">
               <div class="mdl-card__title">
                 <h5 class="mdl-card__title-text mdl-color-text--grey-700">

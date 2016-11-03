@@ -39,14 +39,18 @@
    * Supporting Text
    */
 
-  &__supporting-text {
+  &--tasks &__supporting-text {
     p {
       display: block;
       margin-bottom: rem-calc(5);
     }
   }
 
-  &__title + &__supporting-text {
+  &__supporting-text {
+    padding-top: 0;
+  }
+
+  &--tasks &__title + &__supporting-text {
     padding-top: 0;
     padding-bottom: 0;
   }
