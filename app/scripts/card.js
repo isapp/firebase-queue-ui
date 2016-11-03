@@ -11,6 +11,8 @@ const Session = require('./session.js');
 const database = Firebase.database();
 Vue.use(VueFire);
 
+const route = window.location.pathname;
+
 class Card {
 
     constructor () {
@@ -27,7 +29,7 @@ class Card {
             },
             firebase: {
                 items: {
-                    source: database.ref('queue/v1/location/tasks'),
+                    source: database.ref(route),
                     asObject: true
                 }
             },
@@ -35,14 +37,6 @@ class Card {
                 toggle: function (key, index) {
 
                     this.isExpanded = !this.isExpanded;
-                },
-                retry: function(e) {
-
-                    console.log(e);
-                },
-                remove: function(e) {
-
-                    console.log(e);
                 }
             }
         });

@@ -2,23 +2,23 @@
   "queue": {
     "device": {
       "name": "Device",
-      "path": "queue/v1/device/tasks"
+      "path": "/queue/v1/device/tasks"
     },
     "friendship": {
       "name": "Friendship",
-      "path": "queue/v1/friendship/tasks"
+      "path": "/queue/v1/friendship/tasks"
     },
     "location": {
       "name": "Location",
-      "path": "queue/v1/location/tasks"
+      "path": "/queue/v1/location/tasks"
     },
     "message": {
       "name": "Message",
-      "path": "queue/v1/message/tasks"
+      "path": "/queue/v1/message/tasks"
     },
     "user": {
       "name": "Device",
-      "path": "queue/v1/user/tasks"
+      "path": "/queue/v1/user/tasks"
     }
   }
 }

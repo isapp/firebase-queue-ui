@@ -7,12 +7,12 @@
 
   <link href="favicon.png" rel="icon" type="image/png">
 
-  <!-- build:css styles/vendor.css -->
-  <link rel="stylesheet" href="styles/vendor.css">
+  <!-- build:css /styles/vendor.css -->
+  <link rel="stylesheet" href="/styles/vendor.css">
   <!-- endbuild -->
 
-  <!-- build:css styles/main.css -->
-  <link rel="stylesheet" href="styles/main.css">
+  <!-- build:css /styles/main.css -->
+  <link rel="stylesheet" href="/styles/main.css">
   <!-- endbuild -->
 
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
@@ -50,17 +50,17 @@
       <span class="mdl-layout-title mdl-layout__drawer__title">Queues</span>
 
       <nav class="mdl-navigation">
-        <a href="queue/v1/device/tasks" class="mdl-navigation__link">Device</a>
-        <a href="queue/v1/friendship/tasks" class="mdl-navigation__link">Friendship</a>
-        <a href="queue/v1/location/tasks" class="mdl-navigation__link">Location</a>
-        <a href="queue/v1/message/tasks" class="mdl-navigation__link">Message</a>
-        <a href="queue/v1/user/tasks" class="mdl-navigation__link">User</a>
+        <a href="/queue/v1/device/tasks" class="mdl-navigation__link">Device</a>
+        <a href="/queue/v1/friendship/tasks" class="mdl-navigation__link">Friendship</a>
+        <a href="/queue/v1/location/tasks" class="mdl-navigation__link">Location</a>
+        <a href="/queue/v1/message/tasks" class="mdl-navigation__link">Message</a>
+        <a href="/queue/v1/user/tasks" class="mdl-navigation__link">User</a>
       </nav>
 
       <span class="mdl-layout-title mdl-layout__drawer__title h-s-pt-15">Account</span>
 
       <nav class="mdl-navigation">
-        <a href="#" class="mdl-navigation__link" v-on:click.stop="logout()">Logout</a>
+        <a href="#" class="mdl-navigation__link" v-on:click.stop.prevent="logout()">Logout</a>
       </nav>
     </section>
 
@@ -71,7 +71,7 @@
         <div id="js-card">
 
           <div class="mdl-card mdl-card--large mdl-shadow--2dp" v-for="(item, key, index) in items" v-bind:class="{ 'mdl-card--expanded': isExpanded }">
-            <a href="#" class="mdl-card__expand" v-on:click.stop="toggle(key, index)">
+            <a href="" class="mdl-card__expand" v-on:click.stop.prevent="toggle(key, index)">
               <div class="mdl-card__title">
                 <h5 class="mdl-card__title-text mdl-color-text--grey-700">
                   <i class="material-icons md-light icon--tab h-s-pr-10"></i>
@@ -87,8 +87,8 @@
             </div>
 
             <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="action">
-              <li class="mdl-menu__item"><a href="#" v-on:click.stop="retry">Retry</a></li>
-              <li class="mdl-menu__item"><a href="#" v-on:click.stop="remove">Remove</a></li>
+              <li class="mdl-menu__item"><a href="#" v-on:click.stop.prevent="retry">Retry</a></li>
+              <li class="mdl-menu__item"><a href="#" v-on:click.stop.prevent="remove">Remove</a></li>
             </ul>
 
             <div class="mdl-card__info">
@@ -128,8 +128,8 @@
 
   </div>
 
-  <!-- build:js scripts/main.js -->
-  <script src="scripts/main.js"></script>
+  <!-- build:js /scripts/main.js -->
+  <script src="/scripts/main.js"></script>
   <!-- endbuild -->
 </body>
 </html>
