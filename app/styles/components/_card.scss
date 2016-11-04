@@ -6,6 +6,7 @@
   margin: rem-calc(20) auto;
   width: 100%;
   min-height: auto;
+  transition: all .3s ease;
 
   &:first-child {
     margin-top: 0;
@@ -17,6 +18,12 @@
 
   &--large {
     max-width: rem-calc(750);
+  }
+
+  &.v-enter,
+  &.v-leave {
+    height: 0;
+    opacity: 0;
   }
 
   /*
@@ -61,7 +68,6 @@
 
   &__code {
     margin-top: 0;
-    margin-bottom: 0;
   }
 
   /*
@@ -69,7 +75,7 @@
    */
 
   &__menu {
-    top: rem-calc(10);
+    top: rem-calc(12);
   }
 
   /*

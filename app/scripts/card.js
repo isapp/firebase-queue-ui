@@ -18,6 +18,8 @@ class Card {
         Session.check();
 
         const route = window.location.pathname;
+
+        this.createCard();
         this.check(route);
     }
 
@@ -31,26 +33,63 @@ class Card {
 
             if (databaseSource) {
 
-                resolve(this.get(databaseSource));
+                resolve(this.setCard(databaseSource));
             } else {
 
-                console.log('Failed.');
-                reject('Failed.');
+                reject(this.throwError());
             }
         });
     }
 
-    get (database) {
+    setCard (database) {
 
-        let cards = new Vue({
-            el: '#js-card',
+        console.log('setCard');
+
+        let card = Vue.extend({
+            data: function () {
+                return {
+                    empty: false
+                }
+            },
+            firebase: function() {
+                return {
+                    items: {
+                        source: database,
+                        asObject: true
+                    }
+                }
+            }
+        });
+
+        new card().$mount('#cards');
+    }
+
+    throwError () {
+
+        console.log('error');
+    }
+
+    createCard () {
+
+        let cardItem = Vue.extend({
+            template: '#card'
+        });
+
+        Vue.component('card', cardItem)
+
+        new Vue({
+            el: '#cards',
             data: {
                 isExpanded: false
             },
-            firebase: {
-                items: {
-                    source: database,
-                    asObject: true
+            props: {
+                empty: {
+                    type: Boolean,
+                    default: true
+                },
+                error: {
+                    type: Boolean,
+                    default: false
                 }
             },
             methods: {

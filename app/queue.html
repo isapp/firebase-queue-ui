@@ -68,76 +68,91 @@
 
       <section class="section section--center">
 
-        <div id="js-card-error">
-          <div class="mdl-card mdl-shadow--2dp mdl-card--medium">
+        <div id="cards">
 
-            <div class="mdl-card__title">
-              <h2 class="mdl-card__title-text">Error</h2>
+          <template id="card-empty" v-if="empty">
+
+            <div class="mdl-card mdl-shadow--2dp mdl-card--medium">
+
+              <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Choose a Queue</h2>
+              </div>
+
+              <div class="mdl-card__supporting-text">
+                Click on a queue to see their tasks
+              </div>
+
             </div>
 
-            <div class="mdl-card__supporting-text">
-              Could not locate your tasks. Are you sure your path <code>{{ path }}</code> is correct?
+          </template>
+
+          <template id="card-error" v-if="error">
+
+            <div class="mdl-card mdl-shadow--2dp mdl-card--medium">
+              <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Error</h2>
+              </div>
+
+              <div class="mdl-card__supporting-text">
+                Could not locate your tasks. Are you sure your path <code>{{ path }}</code> is correct?
+              </div>
             </div>
 
-            <div class="mdl-card__actions mdl-card--border">
-              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                Try again
+          </template>
+
+          <template id="card">
+
+            <div class="mdl-card mdl-card--tasks mdl-card--large mdl-shadow--2dp" v-for="(item, key, index) in items" v-bind:class="{ 'mdl-card--expanded': isExpanded }">
+              <a href="" class="mdl-card__expand" v-on:click.stop.prevent="toggle(key, index)">
+                <div class="mdl-card__title">
+                  <h5 class="mdl-card__title-text mdl-color-text--grey-700">
+                    <i class="material-icons md-light icon--tab h-s-pr-10"></i>
+                    {{ key }}
+                  </h5>
+                </div>
               </a>
-            </div>
-          </div>
-        </div>
 
-        <div id="js-card">
-
-          <div class="mdl-card mdl-card--tasks mdl-card--large mdl-shadow--2dp" v-for="(item, key, index) in items" v-bind:class="{ 'mdl-card--expanded': isExpanded }">
-            <a href="" class="mdl-card__expand" v-on:click.stop.prevent="toggle(key, index)">
-              <div class="mdl-card__title">
-                <h5 class="mdl-card__title-text mdl-color-text--grey-700">
-                  <i class="material-icons md-light icon--tab h-s-pr-10"></i>
-                  {{ key }}
-                </h5>
-              </div>
-            </a>
-
-            <div class="mdl-card__menu mdl-card__more">
-              <button id="action" class="mdl-button mdl-js-button mdl-button--icon">
-                <i class="material-icons">more_vert</i>
-              </button>
-            </div>
-
-            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="action">
-              <li class="mdl-menu__item"><a href="#" v-on:click.stop.prevent="retry">Retry</a></li>
-              <li class="mdl-menu__item"><a href="#" v-on:click.stop.prevent="remove">Remove</a></li>
-            </ul>
-
-            <div class="mdl-card__info">
-              <div class="mdl-card__title">
-                <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Data</h5>
+              <div class="mdl-card__menu mdl-card__more">
+                <button id="action" class="mdl-button mdl-js-button mdl-button--icon">
+                  <i class="material-icons">more_vert</i>
+                </button>
               </div>
 
-              <div class="mdl-card__supporting-text">
-                <pre class="mdl-card__code">{{ item.data }}</pre>
-              </div>
+              <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="action">
+                <li class="mdl-menu__item"><a href="#" v-on:click.stop.prevent="retry">Retry</a></li>
+                <li class="mdl-menu__item"><a href="#" v-on:click.stop.prevent="remove">Remove</a></li>
+              </ul>
 
-              <div class="mdl-card__supporting-text">
-                <p><b>Action:</b> {{ item.action }}</p>
-                <p><b>State:</b> {{ item._state }}</p>
-                <p><b>Resource:</b> {{ item.resource }}</p>
-              </div>
+              <div class="mdl-card__info">
+                <div class="mdl-card__title">
+                  <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Data</h5>
+                </div>
 
-              <div class="mdl-card__title">
-                <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Headers</h5>
-              </div>
+                <div class="mdl-card__supporting-text">
+                  <pre class="mdl-card__code">{{ item.data }}</pre>
+                </div>
 
-              <div class="mdl-card__supporting-text">
-                <pre class="mdl-card__code">{{ item.headers }}</pre>
-              </div>
+                <div class="mdl-card__supporting-text">
+                  <p><b>Action:</b> {{ item.action }}</p>
+                  <p><b>State:</b> {{ item._state }}</p>
+                  <p><b>Resource:</b> {{ item.resource }}</p>
+                </div>
 
-              <div class="mdl-card__supporting-text">
-                <b>Last Updated:</b> {{ item._state_changed }}
+                <div class="mdl-card__title">
+                  <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Headers</h5>
+                </div>
+
+                <div class="mdl-card__supporting-text">
+                  <pre class="mdl-card__code">{{ item.headers }}</pre>
+                </div>
+
+                <div class="mdl-card__supporting-text">
+                  <b>Last Updated:</b> {{ item._state_changed }}
+                </div>
               </div>
             </div>
-          </div>
+
+          </template>
 
         </div>
 
