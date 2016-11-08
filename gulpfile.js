@@ -11,6 +11,7 @@ const path = require('path');
 const dotenv = require('dotenv');
 const vueify = require('vueify');
 const superstatic = require('superstatic');
+const watchify = require('watchify');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -39,7 +40,19 @@ gulp.task('scripts', () => {
     .pipe($.plumber())
     .pipe($.tap( (file) => {
       gutil.log('bundling ' + file.path);
-      file.contents = browserify(file.path, {debug: true}).transform(vueify).bundle();
+
+      bundler = browserify({
+        entries: [file.path],
+        debug: true,
+        cache: {},
+        packageCache: {}
+      });
+
+      bundler
+        .transform('babelify', { presets: ['es2015'] })
+        .transform(vueify);
+
+      file.contents = bundler.bundle();
     }))
     .pipe(gulp.dest('.tmp/scripts'))
     .pipe(reload({stream: true}));

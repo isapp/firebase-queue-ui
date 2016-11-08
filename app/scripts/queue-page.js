@@ -1,7 +1,6 @@
 'use strict';
 
 import './session.js';
-import './auth.js';
 import './drawer.js';
 import './card.js';
 

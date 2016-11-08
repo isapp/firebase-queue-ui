@@ -16,86 +16,46 @@ class Card {
     constructor () {
 
         Session.check();
-
-        const route = window.location.pathname;
-
-        this.createCard();
-        this.check(route);
+        this.create();
     }
 
-    check (route) {
+    create () {
 
-        route = route.replace(/^(\/)/g, '');
+        const route = window.location.pathname.replace(/^(\/)/g, '');
 
-        return new Promise( (resolve, reject) => {
-
-            let databaseSource = database.ref(route);
-
-            if (databaseSource) {
-
-                resolve(this.setCard(databaseSource));
-            } else {
-
-                reject(this.throwError());
-            }
-        });
-    }
-
-    setCard (database) {
-
-        console.log('setCard');
-
-        let card = Vue.extend({
-            data: function () {
-                return {
-                    empty: false
-                }
-            },
-            firebase: function() {
-                return {
-                    items: {
-                        source: database,
-                        asObject: true
-                    }
-                }
-            }
-        });
-
-        new card().$mount('#cards');
-    }
-
-    throwError () {
-
-        console.log('error');
-    }
-
-    createCard () {
-
-        let cardItem = Vue.extend({
-            template: '#card'
-        });
-
-        Vue.component('card', cardItem)
-
-        new Vue({
+        let cards = new Vue({
             el: '#cards',
             data: {
-                isExpanded: false
+                showCards: true,
+                isExpanded: false,
+                empty: false,
+                error: false,
+                path: route
             },
-            props: {
-                empty: {
-                    type: Boolean,
-                    default: true
-                },
-                error: {
-                    type: Boolean,
-                    default: false
+            firebase: {
+                items: {
+                    source: database.ref(route),
+                    asObject: true
                 }
             },
             methods: {
-                toggle: function (key, index) {
+                toggleItem: function () {
 
                     this.isExpanded = !this.isExpanded;
+                },
+                removeItem: function (item) {
+
+                    this.$firebaseRefs.items.child(item['.key']).remove();
+                },
+                setError: function (value) {
+
+                    this.showCards = !value;
+                    this.error = value;
+                },
+                setEmpty: function (value) {
+
+                    this.showCards = !value;
+                    this.error = value;
                 }
             }
         });

@@ -14,7 +14,6 @@
     "del": "^2.2.0",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.0.1",
-    "gulp-babel": "^6.1.1",
     "gulp-cache": "^0.4.2",
     "gulp-cssimport": "^4.0.1",
     "gulp-cssnano": "^2.0.0",
@@ -38,6 +37,7 @@
     "mocha": "^3.1.2",
     "run-sequence": "^1.2.2",
     "vueify": "^9.2.4",
+    "watchify": "^3.7.0",
     "xunit-file": "1.0.0"
   },
   "eslintConfig": {
@@ -62,17 +62,5 @@
     "superstatic": "^4.0.3",
     "vue": "^2.0.3",
     "vuefire": "^1.3.0"
-  },
-  "browserify": {
-    "transform": [
-      [
-        "babelify",
-        {
-          "presets": [
-            "es2015"
-          ]
-        }
-      ]
-    ]
   }
 }
