@@ -4,13 +4,17 @@ const Vue = require('vue/dist/vue');
 
 require('./config.js');
 const Session = require('./session.js');
+const queue = require('../queue.json');
 
 class Drawer {
 
     constructor () {
 
         let drawer = new Vue({
-            el: '#js-drawer',
+            el: '#drawer',
+            data: {
+                items: queue
+            },
             methods: {
                 logout: function () {
 

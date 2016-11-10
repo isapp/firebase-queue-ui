@@ -46,15 +46,11 @@
       </div>
     </header>
 
-    <section id="js-drawer" class="mdl-layout__drawer">
+    <section id="drawer" class="mdl-layout__drawer">
       <span class="mdl-layout-title mdl-layout__drawer__title">Queues</span>
 
-      <nav class="mdl-navigation">
-        <a href="/queue/v1/device/tasks" class="mdl-navigation__link">Device</a>
-        <a href="/queue/v1/friendship/tasks" class="mdl-navigation__link">Friendship</a>
-        <a href="/queue/v1/location/tasks" class="mdl-navigation__link">Location</a>
-        <a href="/queue/v1/message/tasks" class="mdl-navigation__link">Message</a>
-        <a href="/queue/v1/user/tasks" class="mdl-navigation__link">User</a>
+      <nav class="mdl-navigation" v-for="item in items">
+        <a class="mdl-navigation__link" v-bind:href="item.path">{{ item.name }}</a>
       </nav>
 
       <span class="mdl-layout-title mdl-layout__drawer__title h-s-pt-15">Account</span>

@@ -46,6 +46,10 @@ class Card {
 
                     this.$firebaseRefs.items.child(item['.key']).remove();
                 },
+                retryItem: function(item) {
+
+                    // this.$firebaseRefs.items.child(item['.key']).remove();
+                },
                 setEmpty: function (value) {
 
                     this.error = value;
