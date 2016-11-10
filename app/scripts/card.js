@@ -16,25 +16,24 @@ class Card {
     constructor () {
 
         Session.check();
-        this.create();
-    }
-
-    create () {
 
         const route = window.location.pathname.replace(/^(\/)/g, '');
+        this.create(route);
+    }
+
+    create (route) {
+
+        let databaseRef = database.ref(route);
 
         let cards = new Vue({
             el: '#cards',
             data: {
-                showCards: true,
                 isExpanded: false,
-                empty: false,
-                error: false,
                 path: route
             },
             firebase: {
                 items: {
-                    source: database.ref(route),
+                    source: databaseRef,
                     asObject: true
                 }
             },
@@ -47,14 +46,8 @@ class Card {
 
                     this.$firebaseRefs.items.child(item['.key']).remove();
                 },
-                setError: function (value) {
-
-                    this.showCards = !value;
-                    this.error = value;
-                },
                 setEmpty: function (value) {
 
-                    this.showCards = !value;
                     this.error = value;
                 }
             }
