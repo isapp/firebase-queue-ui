@@ -50,7 +50,7 @@
       <span class="mdl-layout-title mdl-layout__drawer__title">Queues</span>
 
       <nav class="mdl-navigation" v-for="item in items">
-        <a class="mdl-navigation__link" v-bind:href="item.path">{{ item.name }}</a>
+        <a class="mdl-navigation__link" :href="item.path">{{ item.name }}</a>
       </nav>
 
       <span class="mdl-layout-title mdl-layout__drawer__title h-s-pt-15">Account</span>
@@ -65,7 +65,7 @@
       <section class="section section--center">
 
         <div id="cards">
-          <template id="card-error" v-if="!items.length">
+          <template id="card-error" v-if="!queueLength">
             <div class="mdl-card mdl-shadow--2dp mdl-card--large">
               <div class="mdl-card__title">
                 <h2 class="mdl-card__title-text">No Results</h2>
@@ -77,8 +77,8 @@
             </div>
           </template>
 
-          <template id="card" v-if="items.length">
-            <div class="mdl-card mdl-card--tasks mdl-shadow--2dp mdl-card--large" v-for="(item, key, index) in items" v-bind:class="{ 'mdl-card--expanded': isExpanded }">
+          <template id="card" v-if="queueLength">
+            <div class="mdl-card mdl-card--tasks mdl-shadow--2dp mdl-card--large" v-for="(item, key, index) in items" v-if="key !== '.key'" v-bind:key="item['.key']" v-bind:class="{ 'mdl-card--expanded': isExpanded }">
               <a href="" class="mdl-card__expand" v-on:click.stop.prevent="toggleItem()">
                 <div class="mdl-card__title">
                   <h5 class="mdl-card__title-text mdl-color-text--grey-700">
@@ -89,12 +89,12 @@
               </a>
 
               <div class="mdl-card__menu mdl-card__more">
-                <button id="action" class="mdl-button mdl-js-button mdl-button--icon">
+                <button v-bind:id="action-{{index}}" class="mdl-button mdl-js-button mdl-button--icon">
                   <i class="material-icons">more_vert</i>
                 </button>
               </div>
 
-              <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="action">
+              <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" v-bind:for="action-{{index}}">
                 <li class="mdl-menu__item"><a href="#" v-on:click.stop.prevent="retryItem(item)">Retry</a></li>
                 <li class="mdl-menu__item"><a href="#" v-on:click.stop.prevent="removeItem(item)">Remove</a></li>
               </ul>
@@ -123,7 +123,7 @@
                 </div>
 
                 <div class="mdl-card__supporting-text">
-                  <b>Last Updated:</b> {{ item._state_changed }}
+                  <b>Last Updated:</b> {{ item._state_changed | moment }}
                 </div>
               </div>
             </div>

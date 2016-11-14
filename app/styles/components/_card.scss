@@ -21,9 +21,12 @@
   }
 
   &.v-enter,
-  &.v-leave {
+  &.v-leave-active {
     height: 0;
-    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
   }
 
   /*

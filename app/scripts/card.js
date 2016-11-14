@@ -25,6 +25,10 @@ class Card {
 
         let databaseRef = database.ref(route);
 
+        // databaseRef.on('value', function(db) {
+        //     console.log(db.val());
+        // });
+
         let cards = new Vue({
             el: '#cards',
             data: {
@@ -36,6 +40,15 @@ class Card {
                     source: databaseRef,
                     asObject: true
                 }
+            },
+            computed: {
+                queueLength: function () {
+
+                    // console.log(this.$firebaseRefs.items);
+                    console.log(this);
+
+                    return true;
+                },
             },
             methods: {
                 toggleItem: function () {
@@ -55,6 +68,11 @@ class Card {
                     this.error = value;
                 }
             }
+        });
+
+        Vue.filter('moment', function (date) {
+
+            return Moment(date).format('MMMM Do YYYY, h:mm:ss a');;
         });
     }
 }
