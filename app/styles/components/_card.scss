@@ -20,15 +20,6 @@
     max-width: rem-calc(750);
   }
 
-  &.v-enter,
-  &.v-leave-active {
-    height: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    border-top-width: 0;
-    border-bottom-width: 0;
-  }
-
   /*
    * Title
    */
@@ -43,6 +34,11 @@
     &--queue {
       color: rgba(#000, .66);
     }
+  }
+
+  &__error &__title,
+  &__title:not(:first-child) {
+    padding-top: 0;
   }
 
   /*
@@ -78,7 +74,7 @@
    */
 
   &__menu {
-    top: rem-calc(12);
+    top: rem-calc(13);
   }
 
   /*
@@ -94,11 +90,10 @@
   }
 
   /*
-   * Info and More
+   * Info
    */
 
-  &__info,
-  &__more {
+  &__info {
     height: 0;
     visibility: hidden;
     opacity: 0;
@@ -111,14 +106,6 @@
   }
 
   /*
-   * Menu
-   */
-
-  &__menu {
-    top: rem-calc(10);
-  }
-
-  /*
    * Expanded
    */
 
@@ -126,8 +113,7 @@
     border-bottom: 1px solid rgba(#000, 0.1);
   }
 
-  &--expanded &__info,
-  &--expanded &__more {
+  &--expanded &__info {
     height: auto;
     visibility: visible;
     opacity: 1;

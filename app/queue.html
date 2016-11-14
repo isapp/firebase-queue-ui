@@ -65,6 +65,9 @@
       <section class="section section--center">
 
         <div id="cards">
+
+          <div id="card-progress" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" v-if="!ready"></div>
+
           <template id="card-error" v-if="!queueLength">
             <div class="mdl-card mdl-shadow--2dp mdl-card--large">
               <div class="mdl-card__title">
@@ -88,17 +91,6 @@
                 </div>
               </a>
 
-              <div class="mdl-card__menu mdl-card__more">
-                <button v-bind:id="action-{{index}}" class="mdl-button mdl-js-button mdl-button--icon">
-                  <i class="material-icons">more_vert</i>
-                </button>
-              </div>
-
-              <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" v-bind:for="action-{{index}}">
-                <li class="mdl-menu__item"><a href="#" v-on:click.stop.prevent="retryItem(item)">Retry</a></li>
-                <li class="mdl-menu__item"><a href="#" v-on:click.stop.prevent="removeItem(item)">Remove</a></li>
-              </ul>
-
               <div class="mdl-card__info">
                 <div class="mdl-card__title">
                   <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Data</h5>
@@ -114,6 +106,16 @@
                   <p><b>Resource:</b> {{ item.resource }}</p>
                 </div>
 
+                <div class="mdl-card__error" v-if="item._state == 'error'">
+                  <div class="mdl-card__title">
+                    <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Error Details</h5>
+                  </div>
+
+                  <div class="mdl-card__supporting-text">
+                    <pre class="mdl-card__code">{{ item._error_details }}</pre>
+                  </div>
+                </div>
+
                 <div class="mdl-card__title">
                   <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Headers</h5>
                 </div>
@@ -125,8 +127,19 @@
                 <div class="mdl-card__supporting-text">
                   <b>Last Updated:</b> {{ item._state_changed | moment }}
                 </div>
+
+                <div class="mdl-card__actions mdl-card--border">
+                  <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" v-on:click.stop.prevent="retryItem(item)">
+                    Retry
+                  </a>
+
+                  <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" v-on:click.stop.prevent="removeItem(item)">
+                    Remove
+                  </a>
+                </div>
               </div>
             </div>
+
           </template>
         </div>
 

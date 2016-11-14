@@ -23,17 +23,14 @@ class Card {
 
     create (route) {
 
-        let databaseRef = database.ref(route);
-
-        // databaseRef.on('value', function(db) {
-        //     console.log(db.val());
-        // });
+        let databaseRef = database.ref(route).limitToLast(10);
 
         let cards = new Vue({
             el: '#cards',
             data: {
                 isExpanded: false,
-                path: route
+                path: route,
+                ready: false,
             },
             firebase: {
                 items: {
@@ -41,12 +38,15 @@ class Card {
                     asObject: true
                 }
             },
+            mounted: function () {
+
+                this.ready = true;
+                // componentHandler.upgradeElement(this.$el);
+            },
             computed: {
                 queueLength: function () {
 
-                    // console.log(this.$firebaseRefs.items);
                     console.log(this);
-
                     return true;
                 },
             },
@@ -57,11 +57,13 @@ class Card {
                 },
                 removeItem: function (item) {
 
-                    this.$firebaseRefs.items.child(item['.key']).remove();
+                    console.log('remove');
+                    // this.$firebaseRefs.items.child(item['.key']).remove();
                 },
                 retryItem: function(item) {
 
-                    // this.$firebaseRefs.items.child(item['.key']).remove();
+                    console.log('retry');
+                    // console.log(this.$firebaseRefs.items.child(item['.key']));
                 },
                 setEmpty: function (value) {
 
