@@ -23,7 +23,7 @@ class Card {
 
     create (route) {
 
-        let databaseRef = database.ref(route).limitToLast(10);
+        let databaseRef = database.ref(route);
 
         let cards = new Vue({
             el: '#cards',
@@ -46,7 +46,6 @@ class Card {
             computed: {
                 queueLength: function () {
 
-                    console.log(this);
                     return true;
                 },
             },
@@ -57,17 +56,29 @@ class Card {
                 },
                 removeItem: function (item) {
 
-                    console.log('remove');
-                    // this.$firebaseRefs.items.child(item['.key']).remove();
+                    databaseRef.child(item['.key']).remove()
+                    .then(function() {
+                        console.log('Remove succeeded');
+                    })
+                    .catch(function(error) {
+                        console.log('Remove failed: ' + error.message);
+                    });
                 },
                 retryItem: function(item) {
 
-                    console.log('retry');
-                    // console.log(this.$firebaseRefs.items.child(item['.key']));
-                },
-                setEmpty: function (value) {
+                    console.log(item);
 
-                    this.error = value;
+                    databaseRef.child(item['.key']).set({
+                        _error_details: '',
+                        _state_changed: Date.now(),
+                        _state: 'retry'
+                    })
+                    .then(function() {
+                        console.log('Retry succeeded');
+                    })
+                    .catch(function(error) {
+                        console.log('Retry failed' + error.message);
+                    });
                 }
             }
         });

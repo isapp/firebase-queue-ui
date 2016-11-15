@@ -82,7 +82,7 @@
 
           <template id="card" v-if="queueLength">
             <div class="mdl-card mdl-card--tasks mdl-shadow--2dp mdl-card--large" v-for="(item, key, index) in items" v-if="key !== '.key'" v-bind:key="item['.key']" v-bind:class="{ 'mdl-card--expanded': isExpanded }">
-              <a class="mdl-card__expand" v-on:click.stop.prevent="toggleItem()">
+              <a class="mdl-card__expand" v-on:click.stop.prevent="toggleItem(item)">
                 <div class="mdl-card__title">
                   <h5 class="mdl-card__title-text mdl-color-text--grey-700">
                     <i class="material-icons md-light icon--tab h-s-pr-10"></i>
@@ -129,7 +129,7 @@
                 </div>
 
                 <div class="mdl-card__actions mdl-card--border">
-                  <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" v-on:click.stop.prevent="retryItem(item)">
+                  <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" v-on:click.stop.prevent="retryItem(item, key)">
                     Retry
                   </a>
 
