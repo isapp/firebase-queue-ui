@@ -54,9 +54,9 @@ class Card {
 
                     this.isExpanded = !this.isExpanded;
                 },
-                removeItem: function (item) {
+                removeItem: function (key) {
 
-                    databaseRef.child(item['.key']).remove()
+                    databaseRef.child(key).remove()
                     .then(function() {
                         console.log('Remove succeeded');
                     })
@@ -64,11 +64,9 @@ class Card {
                         console.log('Remove failed: ' + error.message);
                     });
                 },
-                retryItem: function(item) {
+                retryItem: function (key) {
 
-                    console.log(item);
-
-                    databaseRef.child(item['.key']).set({
+                    databaseRef.child(key).set({
                         _error_details: '',
                         _state_changed: Date.now(),
                         _state: 'retry'
