@@ -85,64 +85,66 @@
           </template>
 
           <template id="card" v-if="queue == true">
-            <div class="mdl-card mdl-card--tasks mdl-shadow--2dp mdl-card--large" v-for="(item, key, index) in items" v-if="key !== '.key'" v-bind:key="item['.key']" v-bind:class="{ 'mdl-card--expanded': isExpanded }">
-              <a class="mdl-card__expand" v-on:click.stop.prevent="toggleItem(item)">
-                <div class="mdl-card__title">
-                  <h5 class="mdl-card__title-text mdl-color-text--grey-700">
-                    <i class="material-icons md-light icon--tab h-s-pr-10"></i>
-                    {{ key }}
-                  </h5>
-                </div>
-              </a>
-
-              <div class="mdl-card__info">
-                <div class="mdl-card__title">
-                  <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Data</h5>
-                </div>
-
-                <div class="mdl-card__supporting-text">
-                  <pre class="mdl-card__code">{{ item.data }}</pre>
-                </div>
-
-                <div class="mdl-card__supporting-text">
-                  <p><b>Action:</b> {{ item.action }}</p>
-                  <p><b>State:</b> {{ item._state }}</p>
-                  <p><b>Resource:</b> {{ item.resource }}</p>
-                </div>
-
-                <div class="mdl-card__error" v-if="item._state == 'error'">
+            <transition-group name="mdl-card" tag="ul">
+              <li class="mdl-card mdl-card--tasks mdl-shadow--2dp mdl-card--large" v-for="(item, key, index) in items" v-if="key !== '.key'" v-bind:key="key" v-bind:class="{ 'mdl-card--expanded': isExpanded }">
+                <a class="mdl-card__expand" v-on:click.stop.prevent="toggleItem(item)">
                   <div class="mdl-card__title">
-                    <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Error Details</h5>
+                    <h5 class="mdl-card__title-text mdl-color-text--grey-700">
+                      <i class="material-icons md-light icon--tab h-s-pr-10"></i>
+                      {{ key }}
+                    </h5>
+                  </div>
+                </a>
+
+                <div class="mdl-card__info">
+                  <div class="mdl-card__title">
+                    <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Data</h5>
                   </div>
 
                   <div class="mdl-card__supporting-text">
-                    <pre class="mdl-card__code">{{ item._error_details }}</pre>
+                    <pre class="mdl-card__code">{{ item.data }}</pre>
+                  </div>
+
+                  <div class="mdl-card__supporting-text">
+                    <p><b>Action:</b> {{ item.action }}</p>
+                    <p><b>State:</b> {{ item._state }}</p>
+                    <p><b>Resource:</b> {{ item.resource }}</p>
+                  </div>
+
+                  <div class="mdl-card__error" v-if="item._state == 'error'">
+                    <div class="mdl-card__title">
+                      <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Error Details</h5>
+                    </div>
+
+                    <div class="mdl-card__supporting-text">
+                      <pre class="mdl-card__code">{{ item._error_details }}</pre>
+                    </div>
+                  </div>
+
+                  <div class="mdl-card__title">
+                    <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Headers</h5>
+                  </div>
+
+                  <div class="mdl-card__supporting-text">
+                    <pre class="mdl-card__code">{{ item.headers }}</pre>
+                  </div>
+
+                  <div class="mdl-card__supporting-text">
+                    <b>Last Updated:</b> {{ item._state_changed | moment }}
+                  </div>
+
+                  <div class="mdl-card__actions mdl-card--border">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" v-on:click.stop.prevent="retryItem(key)">
+                      Retry
+                    </a>
+
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" v-on:click.stop.prevent="removeItem(key)">
+                      Remove
+                    </a>
                   </div>
                 </div>
-
-                <div class="mdl-card__title">
-                  <h5 class="mdl-card__title-text mdl-card__title-text--queue h-s-mb-10">Headers</h5>
-                </div>
-
-                <div class="mdl-card__supporting-text">
-                  <pre class="mdl-card__code">{{ item.headers }}</pre>
-                </div>
-
-                <div class="mdl-card__supporting-text">
-                  <b>Last Updated:</b> {{ item._state_changed | moment }}
-                </div>
-
-                <div class="mdl-card__actions mdl-card--border">
-                  <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" v-on:click.stop.prevent="retryItem(key)">
-                    Retry
-                  </a>
-
-                  <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" v-on:click.stop.prevent="removeItem(key)">
-                    Remove
-                  </a>
-                </div>
-              </div>
-            </div>
+              </li>
+            </transition-group>
           </template>
 
         </div>

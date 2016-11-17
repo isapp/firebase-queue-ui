@@ -62,23 +62,28 @@ class Card {
 
                     databaseRef.child(key).remove()
                     .then(function() {
+
                         console.log('Remove succeeded');
+                        this.toggleItem();
                     })
                     .catch(function(error) {
+
                         console.log('Remove failed: ' + error.message);
                     });
                 },
                 retryItem: function (key) {
 
-                    databaseRef.child(key).set({
+                    databaseRef.child(key).update({
                         _error_details: '',
                         _state_changed: Date.now(),
                         _state: 'retry'
                     })
                     .then(function() {
+
                         console.log('Retry succeeded');
                     })
                     .catch(function(error) {
+
                         console.log('Retry failed' + error.message);
                     });
                 }
