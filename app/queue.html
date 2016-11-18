@@ -66,21 +66,25 @@
 
         <div id="cards">
 
-          <div id="card-progress" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" v-if="!ready"></div>
+          <div id="card-progress" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" v-show="queue == null"></div>
 
-          <template id="card-error" v-if="!queueLength">
+          <template id="card-error" v-if="queue == false">
             <div class="mdl-card mdl-shadow--2dp mdl-card--large">
               <div class="mdl-card__title">
                 <h2 class="mdl-card__title-text">No Results</h2>
               </div>
 
               <div class="mdl-card__supporting-text">
-                Could not locate any tasks. Are you sure path <code><b>{{ path }}</b></code> is correct?
+                Could not locate any tasks. Maybe:
+                <ul>
+                  <li>There aren't any new tasks on your Firebase queue</li>
+                  <li>Your path <code><b>{{ path }}</b></code> could be invalid</li>
+                </ul>
               </div>
             </div>
           </template>
 
-          <template id="card" v-if="queueLength">
+          <template id="card" v-if="queue == true">
             <div class="mdl-card mdl-card--tasks mdl-shadow--2dp mdl-card--large" v-for="(item, key, index) in items" v-if="key !== '.key'" v-bind:key="item['.key']" v-bind:class="{ 'mdl-card--expanded': isExpanded }">
               <a class="mdl-card__expand" v-on:click.stop.prevent="toggleItem(item)">
                 <div class="mdl-card__title">
@@ -139,8 +143,8 @@
                 </div>
               </div>
             </div>
-
           </template>
+
         </div>
 
       </section>

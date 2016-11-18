@@ -30,7 +30,7 @@ class Card {
             data: {
                 isExpanded: false,
                 path: route,
-                ready: false,
+                queue: null
             },
             firebase: {
                 items: {
@@ -38,16 +38,20 @@ class Card {
                     asObject: true
                 }
             },
-            mounted: function () {
+            watch: {
+                items: function() {
 
-                this.ready = true;
-                // componentHandler.upgradeElement(this.$el);
-            },
-            computed: {
-                queueLength: function () {
+                    databaseRef.once('value', (snapshot) => {
 
-                    return true;
-                },
+                        if (snapshot.val() !== null) {
+
+                            this.queue = true;
+                        } else {
+
+                            this.queue = false;
+                        }
+                    });
+                }
             },
             methods: {
                 toggleItem: function () {
