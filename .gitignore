@@ -4,5 +4,4 @@ public
 .DS_Store
 .env
 env.json
-queue.json
 xunit.xml

@@ -49,8 +49,8 @@
     <section id="drawer" class="mdl-layout__drawer">
       <span class="mdl-layout-title mdl-layout__drawer__title">Queues</span>
 
-      <nav class="mdl-navigation" v-for="item in items">
-        <a class="mdl-navigation__link" :href="item.path">{{ item.name }}</a>
+      <nav class="mdl-navigation" v-for="queue in queues">
+        <a class="mdl-navigation__link" :href="queue.path">{{ queue.name }}</a>
       </nav>
 
       <span class="mdl-layout-title mdl-layout__drawer__title h-s-pt-15">Account</span>

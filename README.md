@@ -31,39 +31,10 @@ AUTH_DOMAIN=
 DATABASE_URL=
 STORAGE_BUCKET=
 MESSAGING_SENDER_ID=
+UI_SPECS=
 ```
 
-In order to fill your side menu with queues, create a `queue.json` file in `app/`:
-
-```bash
-touch app/queue.json
-```
-
-*app/queue.json*
-```
-{
-  "device": {
-    "name": "Device",
-    "path": "/queue/v1/device/tasks"
-  },
-  "friendship": {
-    "name": "Friendship",
-    "path": "/queue/v1/friendship/tasks"
-  },
-  "location": {
-    "name": "Location",
-    "path": "/queue/v1/location/tasks"
-  },
-  "message": {
-    "name": "Message",
-    "path": "/queue/v1/message/tasks"
-  },
-  "user": {
-    "name": "User",
-    "path": "/queue/v1/user/tasks"
-  }
-}
-```
+In order to fill side menu with your queues, fill `UI_SPECS` with the path to your UI specs node, e.g.: `queue/ui_specs/queues`
 
 ### Preview
 
