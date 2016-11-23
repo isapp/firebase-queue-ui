@@ -34,7 +34,7 @@ MESSAGING_SENDER_ID=
 UI_SPECS=
 ```
 
-In order to fill side menu with your queues, fill `UI_SPECS` with the path to your UI specs node, e.g.: `queue/ui_specs/queues`
+In order to dynamically fill side menu with your queues, fill `UI_SPECS` with the path to your UI specs node, e.g.: `queue/ui_specs/queues`
 
 ### Preview
 
