@@ -49,7 +49,7 @@
     <section id="drawer" class="mdl-layout__drawer">
       <span class="mdl-layout-title mdl-layout__drawer__title">Queues</span>
 
-      <nav class="mdl-navigation" v-for="queue in queues">
+      <nav class="mdl-navigation" v-for="(queue, key) in queues" v-if="key !== '.key'">
         <a class="mdl-navigation__link" :href="queue.path">{{ queue.name }}</a>
       </nav>
 
@@ -86,8 +86,8 @@
 
           <template id="card" v-if="queue == true">
             <transition-group name="mdl-card" tag="ul">
-              <li class="mdl-card mdl-card--tasks mdl-shadow--2dp mdl-card--large" v-for="(item, key, index) in items" v-if="key !== '.key'" v-bind:key="key" v-bind:class="{ 'mdl-card--expanded': isExpanded }">
-                <a class="mdl-card__expand" v-on:click.stop.prevent="toggleItem(item)">
+              <li class="mdl-card mdl-card--tasks mdl-shadow--2dp mdl-card--large js-mdl-card-expand" v-for="(item, key, index) in items" v-if="key !== '.key'" v-bind:key="key" v-bind:class="{ 'mdl-card--expanded': isExpanded }">
+                <a class="mdl-card__expand" v-on:click.stop.prevent="toggleItem(index)">
                   <div class="mdl-card__title">
                     <h5 class="mdl-card__title-text mdl-color-text--grey-700">
                       <i class="material-icons md-light icon--tab h-s-pr-10"></i>

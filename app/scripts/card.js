@@ -54,9 +54,10 @@ class Card {
                 }
             },
             methods: {
-                toggleItem: function () {
+                toggleItem: function (index) {
 
-                    this.isExpanded = !this.isExpanded;
+                    var el = document.getElementsByClassName('js-mdl-card-expand')[index]
+                    el.classList.toggle('mdl-card--expanded');
                 },
                 removeItem: function (key) {
 
