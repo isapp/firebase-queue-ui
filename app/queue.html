@@ -86,7 +86,7 @@
 
           <template id="card" v-if="queue == true">
             <transition-group name="mdl-card" tag="ul">
-              <li class="mdl-card mdl-card--tasks mdl-shadow--2dp mdl-card--large js-mdl-card-expand" v-for="(item, key, index) in items" v-if="key !== '.key'" v-bind:key="key" v-bind:class="{ 'mdl-card--expanded': isExpanded }">
+              <li class="mdl-card mdl-card--tasks mdl-shadow--2dp mdl-card--large js-mdl-card-expand" v-for="(item, key, index) in items" v-if="key !== '.key'" v-bind:key="key">
                 <a class="mdl-card__expand" v-on:click.stop.prevent="toggleItem(index)">
                   <div class="mdl-card__title">
                     <h5 class="mdl-card__title-text mdl-color-text--grey-700">

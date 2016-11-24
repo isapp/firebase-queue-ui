@@ -28,7 +28,6 @@ class Card {
         let cards = new Vue({
             el: '#cards',
             data: {
-                isExpanded: false,
                 path: route,
                 queue: null
             },
