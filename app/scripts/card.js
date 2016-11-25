@@ -4,6 +4,7 @@ const Firebase = require('firebase');
 const Vue = require('vue/dist/vue');
 const VueFire = require('vuefire');
 const Moment = require('moment');
+const _ = require('lodash');
 
 require('./config.js');
 const Session = require('./session.js');
@@ -17,19 +18,25 @@ class Card {
 
         Session.check();
 
-        const route = window.location.pathname.replace(/^(\/)/g, '');
-        this.create(route);
+        let queuePath = window.location.pathname.replace(/^(\/)/g, '');
+        let queueFilter = /^\?filter=(queued|retry|inprogress|error|failed)/g.exec(window.location.search);
+        let queueTasks = /\/(tasks)/g.exec(queuePath);
+        queueFilter = ((queueFilter) ? queueFilter[1] : null);
+        queueTasks = ((queueTasks) ? queueTasks[1] : null);
+
+        this.create(queuePath, queueFilter, queueTasks);
     }
 
-    create (route) {
+    create (queuePath, queueFilter, queueTasks) {
 
-        let databaseRef = database.ref(route);
+        let databaseRef = database.ref(queuePath);
 
         let cards = new Vue({
             el: '#cards',
             data: {
-                path: route,
-                queue: null
+                path: queuePath,
+                queue: null,
+                filter: queueFilter
             },
             firebase: {
                 items: {
@@ -38,11 +45,11 @@ class Card {
                 }
             },
             watch: {
-                items: function() {
+                items: function () {
 
                     databaseRef.once('value', (snapshot) => {
 
-                        if (snapshot.val() !== null) {
+                        if (snapshot.val() !== null && this.path && queueTasks) {
 
                             this.queue = true;
                         } else {
@@ -53,20 +60,41 @@ class Card {
                 }
             },
             methods: {
+                statusFilter: function (filter, items) {
+
+                    if (filter) {
+
+                        // _.filter(items, function(item) {
+                        //
+                        //     return console.log(item);
+                        // });
+
+                        // databaseRef = databaseRef.orderByChild('_state').equalTo(filter);
+
+                        databaseRef.orderByChild('_state').equalTo(filter).once('value', (snapshot) => {
+
+                            console.log(snapshot.val());
+                        });
+
+                        console.log('A filter has been found.');
+                    }
+
+                    return items;
+                },
                 toggleItem: function (index) {
 
-                    var el = document.getElementsByClassName('js-mdl-card-expand')[index]
+                    var el = document.getElementsByClassName('js-mdl-card-expand')[index];
                     el.classList.toggle('mdl-card--expanded');
                 },
-                removeItem: function (key) {
+                removeItem: function (key, index) {
 
                     databaseRef.child(key).remove()
-                    .then(function() {
+                    .then(function () {
 
                         console.log('Remove succeeded');
-                        this.toggleItem();
+                        this.toggleItem(index);
                     })
-                    .catch(function(error) {
+                    .catch(function (error) {
 
                         console.log('Remove failed: ' + error.message);
                     });
@@ -78,11 +106,11 @@ class Card {
                         _state_changed: Date.now(),
                         _state: 'retry'
                     })
-                    .then(function() {
+                    .then(function () {
 
                         console.log('Retry succeeded');
                     })
-                    .catch(function(error) {
+                    .catch(function (error) {
 
                         console.log('Retry failed' + error.message);
                     });
@@ -90,9 +118,26 @@ class Card {
             }
         });
 
+        Vue.filter('icon', function (icon) {
+
+            const icons = {
+                'default': 'check_box_outline',
+                'queue': 'line_weight',
+                'retry': 'call_missed_outgoing',
+                'in_progress': 'loop',
+                'error': 'error'
+            };
+
+            if (icons[icon]) {
+                return icons[icon];
+            } else {
+                return icons['default'];
+            }
+        });
+
         Vue.filter('moment', function (date) {
 
-            return Moment(date).format('MMMM Do YYYY, h:mm:ss a');;
+            return Moment(date).format('MMMM Do YYYY, h:mm:ss a');
         });
     }
 }

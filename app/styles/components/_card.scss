@@ -34,6 +34,10 @@
     &--queue {
       color: rgba(#000, .66);
     }
+
+    .material-icons {
+      width: 25px;
+    }
   }
 
   &__error &__title,
@@ -95,15 +99,11 @@
    */
 
   &__info {
+    max-height: 0;
     height: 0;
     visibility: hidden;
     opacity: 0;
-    transition: 0.15s all ease;
-  }
-
-  &__info {
-    max-height: 0;
-    transition: 0.25s all ease;
+    transition: 0.5s all ease;
   }
 
   /*
@@ -133,16 +133,16 @@
   &-leave-active {
     background-color: #fff;
     opacity: 1;
-    transition: opacity .2s cubic-bezier(.4,0,1,1);
+    transition: all .5s cubic-bezier(.4,0,1,1);
   }
 
   &-enter {
-    background-color: rgb(76,175,80);
+    background-color: rgba(76,175,80, .5);
     opacity: .5;
   }
 
   &-leave-active {
-    background-color: rgb(255,82,82);
+    background-color: rgba(255,82,82, .5);
     opacity: 0;
   }
 }
