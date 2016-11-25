@@ -28,7 +28,6 @@ class Card {
         let cards = new Vue({
             el: '#cards',
             data: {
-                isExpanded: false,
                 path: route,
                 queue: null
             },
@@ -54,9 +53,10 @@ class Card {
                 }
             },
             methods: {
-                toggleItem: function () {
+                toggleItem: function (index) {
 
-                    this.isExpanded = !this.isExpanded;
+                    var el = document.getElementsByClassName('js-mdl-card-expand')[index]
+                    el.classList.toggle('mdl-card--expanded');
                 },
                 removeItem: function (key) {
 
