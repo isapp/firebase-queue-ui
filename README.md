@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/isapp/firebase-queue-ui.svg?style=svg)](https://circleci.com/gh/isapp/firebase-queue-ui)
+[![Build Status](https://semaphoreci.com/api/v1/is/firebase-queue-ui/branches/master/shields_badge.svg)](https://semaphoreci.com/is/firebase-queue-ui)
 
 # Firebase Queue UI
 
