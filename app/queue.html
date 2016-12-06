@@ -33,12 +33,11 @@
 
       </div>
 
-      <div id="tabs" class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-        <a href="?" class="mdl-layout__tab is-active"><i class="material-icons md-light icon--tab h-s-pr-5">content_copy</i> All</a>
-        <a href="?filter=queued" class="mdl-layout__tab"><i class="material-icons md-light icon--tab h-s-pr-5">line_weight</i> Queued</a>
-        <a href="?filter=retry" class="mdl-layout__tab"><i class="material-icons md-light icon--tab h-s-pr-5">call_missed_outgoing</i> Retry</a>
-        <a href="?filter=inprogress" class="mdl-layout__tab"><i class="material-icons md-light icon--tab h-s-pr-5">loop</i> In Progress</a>
-        <a href="?filter=failed" class="mdl-layout__tab"><i class="material-icons md-light icon--tab h-s-pr-5">error</i> Failed</a>
+      <div id="tab" class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+
+        <nav v-for="tab in tabs" v-if="tabs.length > 0">
+          <a href="{{ tab.path }}" class="mdl-layout__tab is-active"><i class="material-icons md-light icon--tab h-s-pr-5">{{ tab.icon }}</i> {{ tab.name }}</a>
+        </nav>
 
         <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="show-dialog">
             <i class="material-icons" role="presentation">add</i>
@@ -58,7 +57,7 @@
 
       <div v-else>
         <nav class="mdl-navigation">
-          <span class="mdl-navigation__link">No queue on UI specs path.</span>
+          <span class="mdl-navigation__link">No queue on UI specs node.</span>
         </nav>
       </div>
 
@@ -95,7 +94,7 @@
 
           <template id="card" v-if="queue == true">
             <transition-group name="mdl-card" tag="ul">
-              <li class="mdl-card mdl-card--tasks mdl-shadow--2dp mdl-card--large js-mdl-card-expand" v-for="(item, key, index) in statusFilter(filter, items)" v-if="key !== '.key'" :key="key">
+              <li class="mdl-card mdl-card--tasks mdl-shadow--2dp mdl-card--large js-mdl-card-expand" v-for="(item, key, index) in filterItems()" v-if="key !== '.key'" :key="key">
                 <a class="mdl-card__expand" v-on:click.stop.prevent="toggleItem(index)">
                   <div class="mdl-card__title">
                     <h5 class="mdl-card__title-text mdl-color-text--grey-700">

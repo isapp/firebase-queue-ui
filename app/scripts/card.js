@@ -60,16 +60,14 @@ class Card {
                 }
             },
             methods: {
-                statusFilter: function (filter, items) {
+                filterItems: function() {
 
-                    if (filter) {
+                    if (this.filter) {
 
-                        this.$bindAsObject('filteredItems', databaseRef.orderByChild('_state').equalTo(filter));
-                        return this.filteredItems;
-                    } else {
-
-                        return items;
+                        this.$bindAsObject('items', databaseRef.orderByChild('_state').equalTo(this.filter));
                     }
+
+                    return this.items;
                 },
                 toggleItem: function (index) {
 
