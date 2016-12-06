@@ -6,3 +6,4 @@ import './session.js';
 import './drawer.js';
 import './card.js';
 import './dialog.js';
+import './tab.js';
