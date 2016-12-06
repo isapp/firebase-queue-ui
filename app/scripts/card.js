@@ -64,22 +64,12 @@ class Card {
 
                     if (filter) {
 
-                        // _.filter(items, function(item) {
-                        //
-                        //     return console.log(item);
-                        // });
+                        this.$bindAsObject('filteredItems', databaseRef.orderByChild('_state').equalTo(filter));
+                        return this.filteredItems;
+                    } else {
 
-                        // databaseRef = databaseRef.orderByChild('_state').equalTo(filter);
-
-                        databaseRef.orderByChild('_state').equalTo(filter).once('value', (snapshot) => {
-
-                            console.log(snapshot.val());
-                        });
-
-                        console.log('A filter has been found.');
+                        return items;
                     }
-
-                    return items;
                 },
                 toggleItem: function (index) {
 
