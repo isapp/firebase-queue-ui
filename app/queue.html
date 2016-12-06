@@ -36,7 +36,7 @@
       <div id="tab" class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
 
         <nav v-for="tab in tabs" v-if="tabs.length > 0">
-          <a href="{{ tab.path }}" class="mdl-layout__tab"><i class="material-icons md-light icon--tab h-s-pr-5">{{ tab.icon }}</i> {{ tab.name }}</a>
+          <a class="mdl-layout__tab" :href="tab.path"><i class="material-icons md-light icon--tab h-s-pr-5">{{ tab.icon }}</i> {{ tab.name }}</a>
         </nav>
 
         <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="show-dialog">
