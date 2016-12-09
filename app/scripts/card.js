@@ -103,29 +103,29 @@ class Card {
                         console.log('Retry failed' + error.message);
                     });
                 }
+            },
+            filters: {
+                icon: function(icon) {
+
+                    const icons = {
+                        'default': 'check_box_outline',
+                        'queue': 'line_weight',
+                        'retry': 'call_missed_outgoing',
+                        'in_progress': 'loop',
+                        'error': 'error'
+                    };
+
+                    if (icons[icon]) {
+                        return icons[icon];
+                    } else {
+                        return icons['default'];
+                    }
+                },
+                moment: function(date) {
+
+                    return Moment(date).format('MMMM Do YYYY, h:mm:ss a');
+                }
             }
-        });
-
-        Vue.filter('icon', function (icon) {
-
-            const icons = {
-                'default': 'check_box_outline',
-                'queue': 'line_weight',
-                'retry': 'call_missed_outgoing',
-                'in_progress': 'loop',
-                'error': 'error'
-            };
-
-            if (icons[icon]) {
-                return icons[icon];
-            } else {
-                return icons['default'];
-            }
-        });
-
-        Vue.filter('moment', function (date) {
-
-            return Moment(date).format('MMMM Do YYYY, h:mm:ss a');
         });
     }
 }

@@ -21,39 +21,40 @@ class Drawer {
         let tab = new Vue({
             el: '#tab',
             data: {
-                active: queueFilter,
+                activeTab: queueFilter,
                 tabs: [
                     {
                         key: '',
                         name: 'All',
-                        icon: 'content_copy',
-                        path: '?'
+                        icon: 'content_copy'
                     },
                     {
                         key: 'queued',
                         name: 'Queued',
-                        icon: 'line_weight',
-                        path: '?filter=queued'
+                        icon: 'line_weight'
                     },
                     {
                         key: 'retry',
                         name: 'Retry',
-                        icon: 'call_missed_outgoing',
-                        path: '?filter=retry'
+                        icon: 'call_missed_outgoing'
                     },
                     {
                         key: 'in-progress',
                         name: 'In Progress',
-                        icon: 'loop',
-                        path: '?filter=in-progress'
+                        icon: 'loop'
                     },
                     {
                         key: 'failed',
                         name: 'Failed',
-                        icon: 'error',
-                        path: '?filter=failed'
+                        icon: 'error'
                     }
                 ]
+            },
+            filters: {
+                queryString: function(key) {
+
+                    return '?filter=' + key;
+                }
             }
         });
     }
