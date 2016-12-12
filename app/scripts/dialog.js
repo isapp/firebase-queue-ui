@@ -1,17 +1,56 @@
-let dialog = document.querySelector('dialog');
-let showDialogButton = document.querySelector('#show-dialog');
+'use strict';
 
-if(!dialog.showModal) {
+const Firebase = require('firebase');
+const Vue = require('vue/dist/vue');
+const VueFire = require('vuefire');
 
-  dialogPolyfill.registerDialog(dialog);
+require('./config.js');
+const Session = require('./session.js');
+const env = require('../env.json');
+
+const database = Firebase.database();
+Vue.use(VueFire);
+
+class Drawer {
+
+    constructor () {
+
+        let dialogEl = document.querySelector('dialog');
+
+        if(!dialogEl.showModal) {
+
+          dialogPolyfill.registerDialog(dialogEl);
+        }
+
+        let databaseRef = database.ref(env.UI_SPECS);
+
+        let dialog = new Vue({
+            el: '#dialog',
+            data: {
+                task: ''
+            },
+            firebase: {
+                queues: {
+                    source: databaseRef,
+                    asObject: true
+                }
+            },
+            methods: {
+                openDialog: function () {
+
+                    dialogEl.showModal();
+                },
+                closeDialog: function () {
+
+                    dialogEl.close();
+                },
+                submitTask: function () {
+
+                    console.log(this.task);
+                }
+            }
+        });
+    }
 }
 
-showDialogButton.addEventListener('click', function () {
-
-  dialog.showModal();
-});
-
-dialog.querySelector('.close').addEventListener('click', function () {
-
-  dialog.close();
-});
+module.exports = new Drawer();
