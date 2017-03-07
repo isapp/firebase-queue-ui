@@ -36,7 +36,8 @@ class Card {
             data: {
                 path: queuePath,
                 queue: null,
-                filter: queueFilter
+                filter: queueFilter,
+                items: null
             },
             firebase: {
                 items: {
