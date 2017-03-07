@@ -20,10 +20,7 @@ class Drawer {
         let drawer = new Vue({
             el: '#drawer',
             firebase: {
-                queues: {
-                    source: databaseRef,
-                    asObject: true
-                }
+                queues: databaseRef
             },
             methods: {
                 logout: function () {
