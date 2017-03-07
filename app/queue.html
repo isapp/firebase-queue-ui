@@ -54,7 +54,7 @@
       <span class="mdl-layout-title mdl-layout__drawer__title">Queues</span>
 
       <div v-if="queues.length > 0">
-        <nav class="mdl-navigation" v-for="(queue, key) in queues" v-if="key !== '.key'">
+        <nav class="mdl-navigation" v-for="queue in queues">
           <a class="mdl-navigation__link" :href="queue.path">{{ queue.name }}</a>
         </nav>
       </div>
